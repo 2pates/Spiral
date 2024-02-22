@@ -16,12 +16,18 @@ Run `ng generate component component-name` to generate a new component. You can 
 ```shell
 main page
 ├── navbar
-└── heroes (redirect to theme page)
+|	└── searchbar
+└── (heroes) (redirect to theme page)
 
 
 theme page
-├── navbar
-└── feature
+├── navbar (the same)
+└── (feature)
+
+interactive map
+└── navbar (the same)
+
+
 ```
 
 ## Nomenclature
@@ -30,7 +36,7 @@ main page
 :	default page, contain a navbar and a list of heroes redirecting to the corresponding theme page
 
 theme page
-:	contain a nav bar and many feature components that redirect to websites
+:	contain a nav bar and many feature components that redirect to websites, title, 
 
 feature
 :	component with title, image, description, color (random?), (location)
