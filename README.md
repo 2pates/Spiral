@@ -26,8 +26,6 @@ theme page
 
 interactive map
 └── navbar (the same)
-
-
 ```
 
 ## Nomenclature
