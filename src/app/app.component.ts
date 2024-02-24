@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HeroesComponent } from './heroes/heroes.component';
+import { environment } from '../environments/environment';
+
 
 @Component({
   selector: 'app-root',
@@ -9,11 +11,12 @@ import { HeroesComponent } from './heroes/heroes.component';
 export class AppComponent {
   title = 'spiral';
   heroes = {
-    a: "s'informer",
-    b: "réduire",
-    c: "réutiliser",
-    d: "substituer"
+    a: environment.a,
+    b: environment.b,
+    c: environment.c,
+    d: environment.d
   }
 }
+
 
 
