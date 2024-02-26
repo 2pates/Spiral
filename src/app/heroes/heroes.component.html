@@ -1,8 +1,10 @@
 
+<br/>
+
 <div id={{inform.title}} class="container py-6"> <!-- id allow to go directly to location of the content -->
     <div class="row flex-lg-row-reverse align-items-center g-5">
 		<div class="col-10 mx-auto col-sm-8 col-lg-6">
-			<img src={{inform.img}} alt="" loading="lazy"> <!-- link of the image -->
+			<img src={{inform.img}} class="d-block mx-lg-auto img-fluid" alt="" width="40%" loading="lazy"> <!-- link of the image -->
 		</div>
 		<div class="col-lg-6">
 			<div class="lc-block mb-3">
@@ -26,12 +28,14 @@
     </div>
 </div>
 
-
+<br/>
+<br/>
+<br/>
 
 <div id={{reduce.title}} class="container py-6">
     <div class="row flex-lg-row-reverse align-items-center g-5">
 		<div class="col-10 mx-auto col-sm-8 col-lg-6">
-			<img src={{reduce.img}} alt="" loading="lazy">
+			<img src={{reduce.img}} class="d-block mx-lg-auto img-fluid" alt="" width="40%" loading="lazy">
 		</div>
 		<div class="col-lg-6">
 			<div class="lc-block mb-3">
@@ -49,11 +53,14 @@
     </div>
 </div>
 
+<br/>
+<br/>
+<br/>
 
 <div id={{reuse.title}} class="container py-6">
     <div class="row flex-lg-row-reverse align-items-center g-5">
 		<div class="col-10 mx-auto col-sm-8 col-lg-6">
-			<img src={{reuse.img}} alt="" loading="lazy">
+			<img src={{reuse.img}} class="d-block mx-lg-auto img-fluid" alt="" width="40%" loading="lazy">
 		</div>
 		<div class="col-lg-6">
 			<div class="lc-block mb-3">
@@ -71,11 +78,14 @@
     </div>
 </div>
 
+<br/>
+<br/>
+<br/>
 
 <div id={{substitute.title}} class="container py-6">
     <div class="row flex-lg-row-reverse align-items-center g-5">
 		<div class="col-10 mx-auto col-sm-8 col-lg-6">
-			<img src={{substitute.img}} class="d-block mx-lg-auto img-fluid" alt="" loading="lazy">
+			<img src={{substitute.img}} class="d-block mx-lg-auto img-fluid" alt="" width="40%" loading="lazy">
 		</div>
 		<div class="col-lg-6">
 			<div class="lc-block mb-3">
@@ -93,7 +103,29 @@
     </div>
 </div>
 
+<br/>
 
+
+
+
+
+<script>
+var onScrollHandler = function() {
+	var newImageUrl = yourImageElement.src;
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	if (scrollTop > 100) {
+		newImageUrl = "planet.png"
+	}
+	if (scrollTop > 200) {
+		newImageUrl = "planet2.jpg"
+	}
+	if (scrollTop > 300) {
+		newImageUrl = "planet3.jpg"
+	}
+	yourImageElement.src = newImageUrl;
+};
+object.addEventListener ("scroll", onScrollHandler);
+</script>
 
 
 

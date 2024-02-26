@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+/* default bootstrap 5 css */
+/* Go at the end to add your changes (line 13892) */
 
 :root,
 [data-bs-theme=light] {
@@ -13887,5 +13888,13 @@ fieldset:disabled .btn {
 		display: none !important
 	}
 }
+
+/* YOUR CHANGES HERE */
+
+br {
+	display: block;
+	margin: 50px 0;
+}
+
 
 

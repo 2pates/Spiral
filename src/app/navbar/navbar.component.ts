@@ -3,11 +3,11 @@ import { environment } from '../../environments/environment';
 
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class FooterComponent {
+export class NavbarComponent {
   a = environment.a
   b = environment.b
   c = environment.c
