@@ -7,6 +7,18 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
+import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+
+import { 
+	IgxIconModule,
+	IgxNavbarModule,
+	IgxDropDownModule,
+	IgxToggleModule,
+	IgxButtonModule
+ } from "igniteui-angular";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +28,14 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    IgxIconModule,
+    IgxNavbarModule,
+    IgxToggleModule,
+    IgxButtonModule,
+    IgxDropDownModule
   ],
   providers: [
     provideClientHydration()

@@ -7,10 +7,10 @@ import { environment } from '../../environments/environment';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
+
 export class NavbarComponent {
   a = environment.a
   b = environment.b
   c = environment.c
   d = environment.d
 }
-
