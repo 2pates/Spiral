@@ -9,7 +9,8 @@ import { environment } from '../environments/environment';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'spiral';
+  
+  title = 'Spiral';
   heroes = {
     a: environment.a,
     b: environment.b,

@@ -18,13 +18,17 @@ import {
 	IgxToggleModule,
 	IgxButtonModule
  } from "igniteui-angular";
+import { ThemeComponent } from './theme/theme.component';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import {
     IgxDropDownModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideRouter(routes)
   ],
   bootstrap: [AppComponent]
 })
