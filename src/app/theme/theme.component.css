@@ -1,0 +1,253 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 1.5rem;
+  grid-auto-rows: minmax(200px, 200px);
+  padding: 5% 10%;
+}
+@media only screen and (max-width: 800px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+}
+
+.box {
+  border-radius: 30px;
+}
+
+.one {
+  grid-column: span 2;
+  grid-row: 1;
+  background-color:#FFD166;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 30% 70%;
+}
+.one h2 {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  grid-column: span 2;
+  grid-row: 1;
+}
+.one p {
+  grid-column: 1;
+  grid-row: 2;
+}
+.one img {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.two {
+  grid-column: auto;
+  grid-row: span 2;
+  background-color:#06D6A0;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30% 15% 55%;
+}
+.two h2 {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 2%;
+  grid-row: 2;
+}
+.two p {
+  padding-left: 5%;
+  grid-row: 3;
+}
+.two img {
+  padding-top: 20px;
+  grid-row: 1;
+}
+
+.three {
+  grid-column: span 1;
+  grid-row: span 2;
+  background-color:#118AB2;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 15% 55% 30%;
+}
+.three h2 {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 2%;
+  grid-row: 1;
+}
+.three p {
+  padding-left: 5%;
+  grid-row: 2;
+}
+.three img {
+  grid-row: 3;
+}
+
+.four {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color:#EF476F;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.four h2 {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 2%;
+  grid-row: 1;
+  grid-column: span 2;
+  text-wrap: balance;
+}
+.four p {
+  padding-left: 5%;
+  grid-row: 2;
+  grid-column: span 3;
+}
+.four img {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.five {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color:#FFD166;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.five h2 {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 2%;
+  grid-row: 1;
+  grid-column: span 2;
+  text-wrap: balance;
+}
+.five p {
+  padding-left: 5%;
+  grid-row: 2;
+  grid-column: span 3;
+}
+.five img {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.six {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color:#118AB2;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.six h2 {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 2%;
+  grid-row: 1;
+  grid-column: span 2;
+  text-wrap: balance;
+}
+.six p {
+  padding-left: 5%;
+  grid-row: 2;
+  grid-column: span 3;
+}
+.six img {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.seven {
+  grid-column: span 1;
+  grid-row: span 1;
+  background-color:#06D6A0;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.seven h2 {
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 2%;
+  grid-row: 1;
+  grid-column: span 2;
+  text-wrap: balance;
+}
+.seven p {
+  padding-left: 5%;
+  grid-row: 2;
+  grid-column: span 3;
+}
+.seven img {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.eight {
+  grid-column: span 2;
+  grid-row: span 1;
+  background-color:#EF476F;
+  border-radius: 30px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+}
+.eight h2 {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  grid-column: span 2;
+  grid-row: 1;
+}
+.eight p {
+  padding-left: 5%;
+  grid-column: 2;
+  grid-row: 2;
+}
+.eight img {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+}
+
+h2 {
+  font-family: cursive;
+  text-overflow: ellipsis;
+}
+
+p {
+  font-family: cursive;
+  text-overflow: ellipsis;
+  text-align: justify;
+  padding-left: 5%;
+  padding-right: 5%;
+}

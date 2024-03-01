@@ -1,1 +1,105 @@
-<p>Future page avec les thèmes abordés</p>
+<div class="wrapper">
+      <div class="box one">
+            <h2>Le titre Un est assez long</h2>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum."</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Un">
+      </div>
+      <div class="box two">
+            <h2>Mais le titre Deux est vachement plus long !</h2>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum."</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Deux">
+      </div>
+      <div class="box three">
+            <h2>Titre Trois</h2>
+            <p>""Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum.""</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Trois">
+      </div>
+      <div class="box four">
+            <h2>C'est un titre moyen mais vrai</h2>
+            <p>"."</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Quatre">
+      </div>
+      <div class="box five">
+            <h2>Titre Cinq plus long que six !</h2>
+            <p>"."</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Cinq">
+      </div>
+      <div class="box six">
+            <h2>Titre Six</h2>
+            <p>"."</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Six">
+      </div>
+      <div class="box seven">
+            <h2>Cependant, titre Sept n'a rien à envier au titre Deux</h2>
+            <p>Texte pour la case Sept.</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Sept">
+      </div>
+      <div class="box eight">
+            <h2>Titre Huit est vraiment vraiment très très long car il faut tester les limites</h2>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum."</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png"
+                  alt="Image Huit">
+      </div>
+</div>
+
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+            var boxOneTitle = document.querySelector('.one h2');
+            var boxTwoTitle = document.querySelector('.two h2');
+            var boxThreeTitle = document.querySelector('.three h2');
+            var boxFourTitle = document.querySelector('.four h2');
+            var boxFiveTitle = document.querySelector('.five h2');
+            var boxSixTitle = document.querySelector('.six h2');
+            var boxSevenTitle = document.querySelector('.seven h2');
+            var boxEightTitle = document.querySelector('.eight h2');
+
+            function adjustFontSize(element, caseType) {
+                  var textLength = element.textContent.length;
+                  var fontSize;
+
+                  if (caseType === 'long') {
+                        // Beaucoup de place pour le titre en longueur
+                        fontSize = 2.8 - 0.022 * textLength + "rem";
+                  } else if (caseType === 'high') {
+                        // Beaucoup de place pour le titre en hauteur
+                        fontSize = 2.8 - 0.028 * textLength + "rem";
+                  } else {                       // Peu de place pour le titre
+                        fontSize = 2.5 - 0.03 * textLength + "rem";
+                  }
+
+                  element.style.fontSize = fontSize;
+            }
+
+            adjustFontSize(boxOneTitle, 'long');
+            adjustFontSize(boxTwoTitle, 'high');
+            adjustFontSize(boxThreeTitle, 'high');
+            adjustFontSize(boxFourTitle, 'short');
+            adjustFontSize(boxFiveTitle, 'short');
+            adjustFontSize(boxSixTitle, 'short');
+            adjustFontSize(boxSevenTitle, 'short');
+            adjustFontSize(boxEightTitle, 'long');
+      });
+</script>
