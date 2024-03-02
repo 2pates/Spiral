@@ -1,15 +1,15 @@
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 25% 25% 25% 25%;
   grid-gap: 1.5rem;
   grid-auto-rows: minmax(200px, 200px);
   padding: 5% 10%;
 }
 @media only screen and (max-width: 800px) {
   .wrapper {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 15% 15% 15% 15% 15% 15%;
   }
 }
 
@@ -23,21 +23,35 @@
   background-color:#FFD166;
   padding: 10px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 30% 70%;
 }
 .one h2 {
-  padding-left: 4%;
-  padding-right: 4%;
+  padding-left: 5%;
+  padding-right: 5%;
   padding-top: 2%;
   grid-column: span 2;
   grid-row: 1;
 }
 .one p {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
   grid-column: 1;
   grid-row: 2;
 }
 .one img {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
   grid-column: 2;
   grid-row: 2;
 }
@@ -49,22 +63,31 @@
   border-radius: 30px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 30% 15% 55%;
+  grid-template-columns: 100%;
+  grid-template-rows: 35% 20% 45%;
 }
 .two h2 {
-  padding-left: 8%;
-  padding-right: 8%;
+  padding-left: 5%;
+  padding-right: 5%;
   padding-top: 2%;
   grid-row: 2;
 }
 .two p {
   padding-left: 5%;
-  grid-row: 3;
+  grid-row: 3;  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .two img {
-  padding-top: 20px;
   grid-row: 1;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
 }
 
 .three {
@@ -74,8 +97,8 @@
   border-radius: 30px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 15% 55% 30%;
+  grid-template-columns: 100%;
+  grid-template-rows: 20% 55% 30%;
 }
 .three h2 {
   padding-left: 8%;
@@ -85,10 +108,20 @@
 }
 .three p {
   padding-left: 5%;
-  grid-row: 2;
+  grid-row: 2;  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .three img {
   grid-row: 3;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
 }
 
 .four {
@@ -98,8 +131,8 @@
   border-radius: 30px;
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 40% 60%;
 }
 .four h2 {
   padding-left: 8%;
@@ -107,16 +140,26 @@
   padding-top: 2%;
   grid-row: 1;
   grid-column: span 2;
-  text-wrap: balance;
 }
 .four p {
   padding-left: 5%;
   grid-row: 2;
-  grid-column: span 3;
+  grid-column: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .four img {
-  grid-row: 1;
-  grid-column: 3;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
+  grid-row: 2;
+  grid-column: 2;
 }
 
 .five {
@@ -126,25 +169,36 @@
   border-radius: 30px;
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 30% 70%;
 }
 .five h2 {
   padding-left: 8%;
   padding-right: 8%;
   padding-top: 2%;
   grid-row: 1;
-  grid-column: span 2;
+  grid-column: 1;
   text-wrap: balance;
 }
 .five p {
   padding-left: 5%;
   grid-row: 2;
-  grid-column: span 3;
+  grid-column: span 2;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .five img {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
   grid-row: 1;
-  grid-column: 3;
+  grid-column: 2;
 }
 
 .six {
@@ -169,8 +223,19 @@
   padding-left: 5%;
   grid-row: 2;
   grid-column: span 3;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .six img {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
   grid-row: 1;
   grid-column: 3;
 }
@@ -197,8 +262,19 @@
   padding-left: 5%;
   grid-row: 2;
   grid-column: span 3;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .seven img {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
   grid-row: 1;
   grid-column: 3;
 }
@@ -210,8 +286,8 @@
   border-radius: 30px;
   padding: 10px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 30% 70%;
 }
 .eight h2 {
   padding-left: 4%;
@@ -224,8 +300,19 @@
   padding-left: 5%;
   grid-column: 2;
   grid-row: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  line-height: 1.2em; /* Hauteur de ligne standard */
+  max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
 }
 .eight img {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  justify-self: center; /* Centers the image horizontally */
+  align-self: center; /* Centers the image vertically */
   grid-column: 1;
   grid-row: 2;
 }
@@ -233,7 +320,6 @@
 
 
 img {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 80%;
@@ -241,12 +327,11 @@ img {
 
 h2 {
   font-family: cursive;
-  text-overflow: ellipsis;
+  font-weight: bold;
 }
 
 p {
   font-family: cursive;
-  text-overflow: ellipsis;
   text-align: justify;
   padding-left: 5%;
   padding-right: 5%;
