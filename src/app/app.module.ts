@@ -10,14 +10,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-
-import { 
-	IgxIconModule,
-	IgxNavbarModule,
-	IgxDropDownModule,
-	IgxToggleModule,
-	IgxButtonModule
- } from "igniteui-angular";
 import { ThemeComponent } from './theme/theme.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -34,12 +26,7 @@ import { routes } from './app.routes';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
-    IgxIconModule,
-    IgxNavbarModule,
-    IgxToggleModule,
-    IgxButtonModule,
-    IgxDropDownModule
+    FormsModule
   ],
   providers: [
     provideClientHydration(),
