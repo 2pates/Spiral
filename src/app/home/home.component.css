@@ -19,9 +19,11 @@
 }
 
 .image-container {
+  flex: 0 0 30%;
   padding-top: 5%;
   padding-bottom: 15%;
   flex: 1;
+  justify-content: center;
 }
 
 .image-container img {
@@ -31,9 +33,7 @@
 }
 
 .text-container {
-  flex: 1;
+  flex: 0 0 60%; /* Cela signifie que .text-container ne se réduira pas en dessous de 70%, ni ne s'étendra au-delà de 70% */
   padding-top: 5%;
   padding-bottom: 15%;
-
-  margin-left: 10%; /* Moves the text to the right side */
 }
