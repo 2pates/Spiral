@@ -1,0 +1,39 @@
+.background-image {
+  background-image: url('https://fakeimg.pl/200x100');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.welcome-text {
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+}
+
+.image-container {
+  padding-top: 5%;
+  padding-bottom: 15%;
+  flex: 1;
+}
+
+.image-container img {
+  position: sticky;
+  top: 30%; /* La position de départ de l'image */
+  bottom: 70%; /* La position de fin de l'image */
+}
+
+.text-container {
+  flex: 1;
+  padding-top: 5%;
+  padding-bottom: 15%;
+
+  margin-left: 10%; /* Moves the text to the right side */
+}
