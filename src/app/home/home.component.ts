@@ -7,7 +7,7 @@ import e from 'express';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  currentImage: string = 'https://fakeimg.pl/300x400?text=Image1'; // Chemin vers votre première image
+  currentImage: string = '../../assets/home1.png'; // Chemin vers votre première image
   threshold_cat2: number = 30;
   threshold_cat3: number = 40;
   threshold_cat4: number = 50;
@@ -19,18 +19,17 @@ export class HomeComponent {
     const totalHeight = document.documentElement.scrollHeight;
     const scrollPosition = window.scrollY;
     const scrollPercentage = (scrollPosition / totalHeight) * 100;
-    console.log('Scroll Percentage:', scrollPercentage);
   
     
     /** Changement d'image en fonction du pourcentage de scroll */
     if (scrollPercentage < this.threshold_cat2) {
-      this.currentImage = 'https://fakeimg.pl/300x400/?text=Image1'; // Path to your second image
+      this.currentImage = '../../assets/home1.png'; // Path to your second image
     } else if (scrollPercentage < this.threshold_cat3) {
-      this.currentImage = 'https://fakeimg.pl/300x400/?text=Image2'; // Path to your first image
+      this.currentImage = '../../assets/home2.png'; // Path to your first image
     } else if (scrollPercentage < this.threshold_cat4) {
-      this.currentImage = 'https://fakeimg.pl/300x400/?text=Image3'; // Path to your third image
+      this.currentImage = '../../assets/home3.png'; // Path to your third image
     } else{
-      this.currentImage = 'https://fakeimg.pl/300x400/?text=Image4'; // Path to your first image
+      this.currentImage = '../../assets/home4.png'; // Path to your first image
     }
   }
 }
