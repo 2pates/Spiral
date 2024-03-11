@@ -20,7 +20,7 @@
 .one {
   grid-column: span 2;
   grid-row: 1;
-  background-color:#FFD166;
+  background-color: #ffd166;
   padding: 10px;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -59,7 +59,7 @@
 .two {
   grid-column: auto;
   grid-row: span 2;
-  background-color:#06D6A0;
+  background-color: #06d6a0;
   border-radius: 30px;
   padding: 10px;
   display: grid;
@@ -74,7 +74,8 @@
 }
 .two p {
   padding-left: 5%;
-  grid-row: 3;  display: -webkit-box;
+  grid-row: 3;
+  display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
@@ -93,7 +94,7 @@
 .three {
   grid-column: span 1;
   grid-row: span 2;
-  background-color:#118AB2;
+  background-color: #118ab2;
   border-radius: 30px;
   padding: 10px;
   display: grid;
@@ -108,7 +109,8 @@
 }
 .three p {
   padding-left: 5%;
-  grid-row: 2;  display: -webkit-box;
+  grid-row: 2;
+  display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
@@ -119,20 +121,17 @@
   grid-row: 3;
   padding-top: 3%;
   padding-bottom: 3%;
-  object-fit: contain; /* Ensures the image maintains its aspect ratio */
-  justify-self: center; /* Centers the image horizontally */
-  align-self: center; /* Centers the image vertically */
 }
 
 .four {
   grid-column: span 1;
   grid-row: span 1;
-  background-color:#EF476F;
+  background-color: #ef476f;
   border-radius: 30px;
   padding: 10px;
   display: grid;
   grid-template-columns: 70% 30%;
-  grid-template-rows: 40% 60%;
+  grid-template-rows: 30% 70%;
 }
 .four h2 {
   padding-left: 8%;
@@ -140,6 +139,7 @@
   padding-top: 2%;
   grid-row: 1;
   grid-column: span 2;
+  text-wrap: balance;
 }
 .four p {
   padding-left: 5%;
@@ -165,7 +165,7 @@
 .five {
   grid-column: span 1;
   grid-row: span 1;
-  background-color:#FFD166;
+  background-color: #ffd166;
   border-radius: 30px;
   padding: 10px;
   display: grid;
@@ -204,7 +204,7 @@
 .six {
   grid-column: span 1;
   grid-row: span 1;
-  background-color:#118AB2;
+  background-color: #118ab2;
   border-radius: 30px;
   padding: 10px;
   display: grid;
@@ -243,7 +243,7 @@
 .seven {
   grid-column: span 1;
   grid-row: span 1;
-  background-color:#06D6A0;
+  background-color: #06d6a0;
   border-radius: 30px;
   padding: 10px;
   display: grid;
@@ -282,7 +282,7 @@
 .eight {
   grid-column: span 2;
   grid-row: span 1;
-  background-color:#EF476F;
+  background-color: #ef476f;
   border-radius: 30px;
   padding: 10px;
   display: grid;
@@ -316,8 +316,6 @@
   grid-column: 1;
   grid-row: 2;
 }
-
-
 
 img {
   margin-left: auto;
