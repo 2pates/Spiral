@@ -9,6 +9,7 @@ export const resources = [
     link: 'https://www.ademe.fr/',
     imageUrl:
       'https://www.ademe.fr/wp-content/uploads/2022/11/ademe-logo-2022-1.svg',
+    tags: ['sinformer', 'bilan', 'accompagnement'],
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const resources = [
     link: 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiBs_fJ2uyEAxW6UKQEHR4sBVQQFnoECAgQAQ&url=https%3A%2F%2Fwww.lacagettedesgones.fr%2F&usg=AOvVaw2B8XDfcsBlNFtQYTP-HHIp&opi=89978449',
     imageUrl:
       'https://www.lacagettedesgones.fr/img/la-cagette-des-gones-logo-1619101897.jpg',
+    tags: ['substituer', 'agir', 'alimentaire', 'courses', 'achats'],
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ export const resources = [
     link: 'https://emmaus-france.org',
     imageUrl:
       'https://emmaus-france.org/wp-content/themes/emmausfr/assets/img/logo-emmaus-france.svg',
+    tags: ['réutiliser', 'substituer', 'vestimentaire', 'achats'],
   },
   {
     id: 4,
@@ -32,6 +35,7 @@ export const resources = [
     body: "Simplifiez la planification de vos achats alimentaires avec d'autres personnes grâce à la liste de courses simple et partagée de Bring! - la meilleure liste de courses à partager ! Téléchargez gratuitement l'application Bring! et utilisez-la sur tous vos appareils. Créez une liste de courses partagée dès maintenant et commencez à planifier vos courses avec d'autres personnes ! ",
     link: 'https://web.getbring.com/',
     imageUrl: 'https://web.getbring.com/assets/images/Bring_Logo_128_128.png',
+    tags: ['réduire', 'alimentaire', 'courses'],
   },
   {
     id: 5,
@@ -40,6 +44,7 @@ export const resources = [
     link: 'https://fr.wikipedia.org/wiki/Flat_white',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Swan_in_flat_white.jpg/330px-Swan_in_flat_white.jpg',
+    tags: ['bullshit', 'alimentaire'],
   },
   {
     id: 6,
@@ -53,6 +58,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 7,
@@ -61,6 +67,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 8,
@@ -75,6 +82,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 9,
@@ -88,6 +96,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 10,
@@ -101,6 +110,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 11,
@@ -114,6 +124,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 12,
@@ -127,6 +138,7 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
   {
     id: 13,
@@ -140,5 +152,6 @@ export const resources = [
     link: 'https://www.wikipedia.fr/',
     imageUrl:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
+    tags: ['random'],
   },
 ];

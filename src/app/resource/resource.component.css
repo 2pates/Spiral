@@ -188,7 +188,10 @@
   grid-row: 2;
 }
 
-img {
+.resource-link {
+  margin: 8%;
+}
+.resource-img {
   margin: 8%;
   max-height: 11em;
   max-width: 100%;
