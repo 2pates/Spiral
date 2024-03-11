@@ -2,7 +2,7 @@
       <div *ngFor="let resource of resources; let i = index" class="box" [ngClass]="boxes[i % boxes.length]?.value">
 
             <h2 #title>{{resource.title}}</h2>
-            <p>"boxes[i % boxes.length]?.value" + {{resource.body}}</p>
+            <p>{{resource.body}}</p>
             <a class="resource-link" href="{{resource.link}}" target="_blank">
                   <img class="resource-img" src="{{resource.imageUrl}}" alt="Image Un">
             </a>

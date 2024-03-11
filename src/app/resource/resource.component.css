@@ -189,14 +189,13 @@
 }
 
 .resource-link {
-  margin: 8%;
+  margin: 4%;
+  justify-self: center; /* Centers the image horizontally */
 }
 .resource-img {
-  margin: 8%;
   max-height: 11em;
   max-width: 100%;
   object-fit: contain; /* Ensures the image maintains its aspect ratio */
-  justify-self: center; /* Centers the image horizontally */
   align-self: center; /* Centers the image vertically */
 }
 

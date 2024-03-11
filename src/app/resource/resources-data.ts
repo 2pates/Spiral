@@ -8,7 +8,7 @@ export const resources = [
       'Face à l’urgence, nous nous fixons des objectifs ambitieux et appelons à une mobilisation générale : il faut faire plus vite.',
     link: 'https://www.ademe.fr/',
     imageUrl:
-      'https://www.ademe.fr/wp-content/uploads/2022/11/ademe-logo-2022-1.svg',
+      'https://www.akajoule.com/wp-content/uploads/2020/05/Logo-Ademe-2020.jpg',
     tags: ['sinformer', 'bilan', 'accompagnement'],
   },
   {
