@@ -1,0 +1,8 @@
+<div class="wrapper">
+      <div *ngFor="let resource of resources; let i = index" class="box" [ngClass]="boxes[i % boxes.length]?.value">
+
+            <h2 #title>{{resource.title}}</h2>
+            <p>{{resource.body}}</p>
+            <img src="{{resource.imageUrl}}" alt="Image Un">
+      </div>
+</div>

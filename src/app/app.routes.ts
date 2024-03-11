@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { ThemeComponent } from './theme/theme.component';
+import { ResourceComponent } from './resource/resource.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
 export const routes = [
   { path: '', component: HeroesComponent },
-  { path: 'sinformer', component: ThemeComponent },
-  { path: 'reduire', component: ThemeComponent },
-  { path: 'reutiliser', component: ThemeComponent },
-  { path: 'substituer', component: ThemeComponent },
+  { path: 'sinformer', component: ResourceComponent },
+  { path: 'reduire', component: ResourceComponent },
+  { path: 'reutiliser', component: ResourceComponent },
+  { path: 'substituer', component: ResourceComponent },
 ];

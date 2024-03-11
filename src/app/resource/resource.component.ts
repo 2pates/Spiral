@@ -6,14 +6,48 @@ import {
   QueryList,
   Inject,
 } from '@angular/core';
+import { resources } from './resources-data';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-theme',
-  templateUrl: './theme.component.html',
-  styleUrls: ['./theme.component.css'],
+  selector: 'app-resource',
+  templateUrl: './resource.component.html',
+  styleUrls: ['./resource.component.css'],
 })
-export class ThemeComponent implements AfterViewInit {
+export class ResourceComponent implements AfterViewInit {
+  public resources = resources;
+
+  public boxes: any[] = [
+    { value: 'one' },
+    {
+      value: 'two',
+    },
+    {
+      value: 'three',
+    },
+    {
+      value: 'four',
+    },
+    {
+      value: 'five',
+    },
+    {
+      value: 'six',
+    },
+    {
+      value: 'seven',
+    },
+    {
+      value: 'eight',
+    },
+  ];
+
+  /*
+-----
+Resize boxes' title
+-----
+*/
+
   @ViewChildren('title') titles!: QueryList<ElementRef>;
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
@@ -39,7 +73,7 @@ export class ThemeComponent implements AfterViewInit {
           const fontSize = parseFloat(computedStyle.fontSize);
           const newFontSize = (fontSize * maxLines) / numberOfLines;
 
-          element.style.fontSize = `${newFontSize}px`;
+          element.style.fontSize = newFontSize + 'px';
         } else {
           var textLength = element.textContent?.length ?? 0;
           var fontSizeMax = 2.8;

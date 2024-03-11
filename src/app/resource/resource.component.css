@@ -1,16 +1,10 @@
 .wrapper {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-rows: 1fr;
   grid-gap: 1.5rem;
-  grid-auto-rows: minmax(200px, 200px);
+  grid-auto-rows: minmax(200px, auto);
   padding: 5% 10%;
-}
-@media only screen and (max-width: 1200px) {
-  .wrapper {
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 15% 15% 15% 15% 15% 15%;
-  }
 }
 
 .box {
@@ -195,11 +189,9 @@
 }
 
 img {
-  margin-top: 8%;
-  margin-bottom: 8%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 80%;
+  margin: 8%;
+  max-height: 11em;
+  max-width: 100%;
   object-fit: contain; /* Ensures the image maintains its aspect ratio */
   justify-self: center; /* Centers the image horizontally */
   align-self: center; /* Centers the image vertically */
@@ -212,7 +204,7 @@ h2 {
   font-family: cursive;
   align-items: center;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 p {
@@ -227,6 +219,19 @@ p {
   -webkit-box-orient: vertical;
   line-height: 1.2em; /* Hauteur de ligne standard */
   max-height: 11em; /* 5 lignes de texte, plus une marge pour les points de suspension */
+}
+
+/*
+-----
+  Version avec deux colonnes !
+-----
+*/
+
+@media only screen and (max-width: 1200px) {
+  .wrapper {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 15% 15% 15% 15% 15% 15%;
+  }
 }
 
 /*
