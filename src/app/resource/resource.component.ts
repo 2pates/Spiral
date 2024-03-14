@@ -6,7 +6,7 @@ import {
   QueryList,
   Inject,
 } from '@angular/core';
-import { resources } from './resources-data';
+import { resources } from '../database/resources-data';
 import { DOCUMENT } from '@angular/common';
 
 @Component({

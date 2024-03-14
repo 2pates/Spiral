@@ -18,6 +18,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { IonicModule } from '@ionic/angular';
+import { ResourceEditComponent } from './resource-edit/resource-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { IonicModule } from '@ionic/angular';
     FooterComponent,
     NavbarComponent,
     HomeComponent,
-    ResourceComponent
+    ResourceComponent,
+    ResourceEditComponent
   ],
   imports: [
     BrowserModule,
