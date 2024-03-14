@@ -25,8 +25,8 @@ import { IonicModule } from '@ionic/angular';
     HeroesComponent,
     FooterComponent,
     NavbarComponent,
-    HomeComponent
-    ResourceComponent,
+    HomeComponent,
+    ResourceComponent
   ],
   imports: [
     BrowserModule,
