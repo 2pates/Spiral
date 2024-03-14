@@ -1,4 +1,3 @@
-
 # Spiral
 
 Angular project with Angular CLI 17.2.0 and npm 9.2.0 (`ng version`)
@@ -17,10 +16,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 main page
 ├── navbar
 |	└── searchbar
-└── (heroes) (redirect to theme page)
+└── (heroes) (redirect to resource page)
 
 
-theme page
+resource page
 ├── navbar (the same)
 └── (feature)
 
@@ -31,13 +30,13 @@ interactive map
 ## Nomenclature
 
 main page
-:	default page, contain a navbar and a list of heroes redirecting to the corresponding theme page
+: default page, contain a navbar and a list of heroes redirecting to the corresponding resource page
 
-theme page
-:	contain a nav bar and many feature components that redirect to websites, title, 
+resource page
+: contain a nav bar and many feature components that redirect to websites, title,
 
 feature
-:	component with title, image, description, color (random?), (location)
+: component with title, image, description, color (random?), (location)
 
 ## Git good practices
 
@@ -46,12 +45,3 @@ feature
 - commit only if it works
 - name your commits `feature|bugfix|add|remove|refactor [description]`
 - change branch to add a radically new feature
-
-
-
-
-
-
-
-
-
