@@ -1,71 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulaire</title>
-  <link rel="stylesheet" href="resource-edit.component.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Ajouter une ressource</h1>
-    <form action="#" method="post" onsubmit="return validateForm()">
-      <label for="title">Titre:</label>
-      <input type="text" id="title" name="title" maxlength="85" required>
+<div class="container">
+  <h1>Ajouter une ressource</h1>
+  <form (ngSubmit)="onSubmit()" #resourceForm="ngForm">
+    <label for="title">Titre:</label>
+    <div *ngIf="resourceForm.submitted && !title" class="error-text">Le titre est requis.</div>
+    <input type="text" id="title" name="title" [(ngModel)]="title" maxlength="85" required>
 
-      <label for="body">Description:</label>
-      <textarea id="body" name="body" rows="4" maxlength="400" required></textarea>
+    <label for="body">Description:</label>
+    <div *ngIf="resourceForm.submitted && !body" class="error-text">La description est requise.</div>
+    <textarea id="body" name="body" [(ngModel)]="body" rows="4" maxlength="400" required></textarea>
 
-      <label for="link">Lien:</label>
-      <input type="url" id="link" name="link" required>
+    <label for="link">Lien:</label>
+    <div *ngIf="resourceForm.submitted && !link" class="error-text">Le lien est requis.</div>
+    <input type="url" id="link" name="link" [(ngModel)]="link" required>
 
-      <label for="imageUrl">URL de l'image:</label>
-      <input type="url" id="imageUrl" name="imageUrl" required>
+    <label for="imageUrl">URL de l'image:</label>
+    <div *ngIf="resourceForm.submitted && !imageUrl" class="error-text">L'URL de l'image est requise.</div>
+    <input type="url" id="imageUrl" name="imageUrl" [(ngModel)]="imageUrl" required>
 
-      <fieldset class="tags-container">
-        <legend>Tags:</legend>
-        <label>
-          <input type="checkbox" id="sinformer" name="tags" value="sinformer">
-          S'informer
-        </label>
-        <label>
-          <input type="checkbox" id="reduire" name="tags" value="reduire">
-          Réduire
-        </label>
-        <label>
-          <input type="checkbox" id="reutiliser" name="tags" value="reutiliser">
-          Réutiliser
-        </label>
-        <label>
-          <input type="checkbox" id="substituer" name="tags" value="substituer">
-          Substituer
-        </label>
-      </fieldset>
 
-      <div class="search-bar">
-        <input type="text" id="tagSearch" placeholder="Rechercher un tag">
-        <input type="submit" value="Ajouter">
-      </div>
+    <fieldset class="tags-container">
+      <legend>Tags:</legend>
+      <label>
+        <input type="checkbox" id="sinformer" name="tags" [(ngModel)]="sinformer" value="sinformer">
+        S'informer
+      </label>
+      <label>
+        <input type="checkbox" id="reduire" name="tags" [(ngModel)]="reduire" value="reduire">
+        Réduire
+      </label>
+      <label>
+        <input type="checkbox" id="reutiliser" name="tags" [(ngModel)]="reutiliser" value="reutiliser">
+        Réutiliser
+      </label>
+      <label>
+        <input type="checkbox" id="substituer" name="tags" [(ngModel)]="substituer" value="substituer">
+        Substituer
+      </label>
 
-      <input type="submit" value="Envoyer">
-    </form>
-  </div>
+    </fieldset>
 
-  <script>
-    function validateForm() {
-      var checkboxes = document.querySelectorAll('input[type="checkbox"][name="tags"]');
-      var checked = false;
-      checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) {
-          checked = true;
-        }
-      });
-      if (!checked) {
-        alert("Veuillez cocher au moins une des options.");
-        return false;
-      }
-      return true;
-    }
-  </script>
-</body>
-</html>
+    <div class="search-bar">
+      <input type="text" id="tagSearch" placeholder="Rechercher un tag">
+      <input type="submit" value="Ajouter">
+    </div>
+
+    <input type="submit" value="Envoyer">
+  </form>
+</div>

@@ -1,56 +1,43 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
+  OnInit,
   ViewChildren,
   QueryList,
+  ElementRef,
   Inject,
 } from '@angular/core';
-import { resources } from '../database/resources-data';
 import { DOCUMENT } from '@angular/common';
+import { ResourcesData } from '../shared/database/resources.data'; // Import ResourcesData here
 
 @Component({
   selector: 'app-resource',
   templateUrl: './resource.component.html',
   styleUrls: ['./resource.component.css'],
 })
-export class ResourceComponent implements AfterViewInit {
-  public resources = resources;
-
+export class ResourceComponent implements OnInit {
+  resources: any[] = [];
   public boxes: any[] = [
     { value: 'one' },
-    {
-      value: 'two',
-    },
-    {
-      value: 'three',
-    },
-    {
-      value: 'four',
-    },
-    {
-      value: 'five',
-    },
-    {
-      value: 'six',
-    },
-    {
-      value: 'seven',
-    },
-    {
-      value: 'eight',
-    },
+    { value: 'two' },
+    { value: 'three' },
+    { value: 'four' },
+    { value: 'five' },
+    { value: 'six' },
+    { value: 'seven' },
+    { value: 'eight' },
   ];
-
-  /*
------
-Resize boxes' title
------
-*/
 
   @ViewChildren('title') titles!: QueryList<ElementRef>;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private resourcesData: ResourcesData // Inject ResourcesData here
+  ) {}
+
+  ngOnInit(): void {
+    const db = this.resourcesData.createDb();
+    this.resources = db['resources'];
+  }
 
   ngAfterViewInit() {
     this.titles.forEach((title) => this.adjustFontSize(title.nativeElement));
