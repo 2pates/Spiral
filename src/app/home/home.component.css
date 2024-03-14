@@ -1,0 +1,67 @@
+.background-image {
+  background-image: url('../../assets/home-main.png');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.welcome-text {
+  padding: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 200px;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+}
+
+.image-container {
+  flex: 0 0 30%;
+  padding-top: 5%;
+  padding-bottom: 15%;
+  flex: 1;
+  justify-content: center;
+}
+
+.image-container img {
+  position: sticky;
+  top: 30%; /* La position de départ de l'image */
+  bottom: 70%; /* La position de fin de l'image */
+}
+
+.text-container {
+  flex: 0 0 60%; /* Cela signifie que .text-container ne se réduira pas en dessous de 70%, ni ne s'étendra au-delà de 70% */
+  padding-top: 5%;
+  padding-bottom: 15%;
+}
+
+.theme-explaination-sinformer, .theme-explaination-reduire, .theme-explaination-reutiliser, .theme-explaination-substituer {
+  margin-top: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+.theme-explaination-sinformer {
+  background-color: #e07a5f;
+}
+
+.theme-explaination-reduire {
+  background-color: #f4f1de;
+}
+
+.theme-explaination-reutiliser {
+  background-color: #81b29a;
+}
+
+.theme-explaination-substituer {
+  background-color: #f2cc8f;
+}

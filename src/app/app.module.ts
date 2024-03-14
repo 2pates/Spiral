@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResourceComponent } from './resource/resource.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
+import { HomeComponent } from './home/home.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { routes } from './app.routes';
     HeroesComponent,
     FooterComponent,
     NavbarComponent,
+    HomeComponent
     ResourceComponent,
   ],
   imports: [
