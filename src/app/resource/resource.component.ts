@@ -7,7 +7,8 @@ import {
   Inject,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ResourcesData } from '../shared/database/resources.data'; // Import ResourcesData here
+import { IResource } from '../shared/models/resource';
+import { ResourceService } from '../shared/services/resource.service';
 
 @Component({
   selector: 'app-resource',
@@ -15,7 +16,10 @@ import { ResourcesData } from '../shared/database/resources.data'; // Import Res
   styleUrls: ['./resource.component.css'],
 })
 export class ResourceComponent implements OnInit {
-  resources: any[] = [];
+  public resources: IResource[] = [];
+
+  public errMsg: string | undefined;
+
   public boxes: any[] = [
     { value: 'one' },
     { value: 'two' },
@@ -31,12 +35,17 @@ export class ResourceComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private resourcesData: ResourcesData // Inject ResourcesData here
+    //ADD
+    private resourceService: ResourceService // Inject ResourcesData here //ADD
   ) {}
 
-  ngOnInit(): void {
-    const db = this.resourcesData.createDb();
-    this.resources = db['resources'];
+  ngOnInit() {
+    //ADD
+    this.resourceService.getResources().subscribe({
+      next: (resources) => (this.resources = resources),
+      error: (err: string) => (this.errMsg = err),
+    });
+    //ADD
   }
 
   ngAfterViewInit() {

@@ -18,7 +18,6 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { ResourceEditComponent } from './resource-edit/resource-edit.component';
-import { ResourcesData } from './shared/database/resources.data';
 import { ResourceComponent } from './resource/resource.component';
 
 @NgModule({
@@ -37,10 +36,9 @@ import { ResourceComponent } from './resource/resource.component';
     BrowserAnimationsModule,
     FormsModule,
     CommonModule,
-    HttpClientModule, // Import HttpClientModule if not imported already
-    HttpClientInMemoryWebApiModule.forRoot(ResourcesData), // Use HttpClientInMemoryWebApiModule.forRoot with ResourcesData
+    HttpClientModule,
   ],
-  providers: [provideClientHydration(), provideRouter(routes), ResourcesData],
+  providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
