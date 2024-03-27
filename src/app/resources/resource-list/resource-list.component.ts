@@ -36,17 +36,14 @@ export class ResourceListComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    //ADD
     private resourceService: ResourceService // Inject ResourcesData here //ADD
   ) {}
 
   ngOnInit() {
-    //ADD
     this.resourceService.getResources().subscribe({
       next: (resources) => (this.resources = resources),
       error: (err: string) => (this.errMsg = err),
     });
-    //ADD
   }
 
   ngAfterViewInit() {

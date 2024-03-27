@@ -9,6 +9,7 @@ export const routes = [
   { path: 'reduire', component: ResourceListComponent },
   { path: 'reutiliser', component: ResourceListComponent },
   { path: 'substituer', component: ResourceListComponent },
-  { path: 'admin', component: ResourceEditComponent },
-  { path: 'admin/resources/:id', component: ResourceEditComponent },
+  { path: 'admin', component: ResourceListComponent },
+  //{ path: 'admin/resources/:id', component: ResourceEditComponent }, Faire un resource-detail
+  { path: 'admin/resources/:id/edit', component: ResourceEditComponent },
 ];

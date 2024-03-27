@@ -37,7 +37,7 @@ export class ResourceEditComponent {
     return true;
   }
 
-  saveResource() {
+  saveResource(): void {
     const tags = {
       sinformer: this.sinformer,
       reduire: this.reduire,
