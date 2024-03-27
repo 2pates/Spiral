@@ -7,6 +7,7 @@ import {
   Inject,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+
 import { IResource } from '../shared/models/resource';
 import { ResourceService } from '../shared/services/resource.service';
 
