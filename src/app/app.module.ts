@@ -4,8 +4,7 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule if not imported already
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
-import { ResourceEditComponent } from './resource-edit/resource-edit.component';
-import { ResourceComponent } from './resource/resource.component';
+import { ResourceEditComponent } from './resources/resource-edit/resource-edit.component';
+import { ResourceComponent } from './resources/resource-list/resource-list.component';
 
 @NgModule({
   declarations: [

@@ -12,8 +12,8 @@ import { ResourceService } from '../shared/services/resource.service';
 
 @Component({
   selector: 'app-resource',
-  templateUrl: './resource.component.html',
-  styleUrls: ['./resource.component.css'],
+  templateUrl: './resource-list.component.html',
+  styleUrls: ['./resource-list.component.css'],
 })
 export class ResourceComponent implements OnInit {
   public resources: IResource[] = [];

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResourceComponent } from './resource.component';
+import { ResourceComponent } from './resource-list.component';
 
 describe('ResourceComponent', () => {
   let component: ResourceComponent;
