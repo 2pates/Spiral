@@ -12,4 +12,5 @@ export const routes = [
   { path: 'admin', component: ResourceListComponent },
   //{ path: 'admin/resources/:id', component: ResourceEditComponent }, Faire un resource-detail
   { path: 'admin/resources/:id/edit', component: ResourceEditComponent },
+  { path: 'admin/resources/create', component: ResourceEditComponent },
 ];

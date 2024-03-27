@@ -4,5 +4,10 @@ export interface IResource {
   body: string;
   link: string;
   imageUrl: string;
-  tags: string[];
+  tags: {
+    sinformer: boolean;
+    reduire: boolean;
+    reutiliser: boolean;
+    substituer: boolean;
+  };
 }

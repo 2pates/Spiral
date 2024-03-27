@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { IResource } from '../models/resource';
 
 @Injectable({
@@ -15,6 +15,22 @@ export class ResourceService {
   public getResources(): Observable<IResource[]> {
     return this.http.get<IResource[]>(this.RESOURCE_API_URL).pipe(
       tap((resources) => console.log('resources: ', resources)),
+      catchError(this.handleError)
+    );
+  }
+
+  public getResourceById(id: number): Observable<IResource> {
+    return this.getResources().pipe(
+      map((resources) =>
+        resources.find((resource) => resource.resourceId === id)
+      ),
+      map((resource) => {
+        if (resource) {
+          return resource;
+        } else {
+          throw new Error(`Resource with id ${id} not found`);
+        }
+      }),
       catchError(this.handleError)
     );
   }

@@ -2,38 +2,38 @@
   <h1>Ajouter une ressource</h1>
   <form (ngSubmit)="onSubmit()" #resourceForm="ngForm">
     <label for="title">Titre:</label>
-    <div *ngIf="resourceForm.submitted && !title" class="error-text">Le titre est requis.</div>
-    <input type="text" id="title" name="title" [(ngModel)]="title" maxlength="85" required>
+    <div *ngIf="resourceForm.submitted && !resource.title" class="error-text">Le titre est requis.</div>
+    <input type="text" id="title" name="title" [(ngModel)]="resource.title" maxlength="85" required>
 
     <label for="body">Description:</label>
-    <div *ngIf="resourceForm.submitted && !body" class="error-text">La description est requise.</div>
-    <textarea id="body" name="body" [(ngModel)]="body" rows="4" maxlength="400" required></textarea>
+    <div *ngIf="resourceForm.submitted && !resource.body" class="error-text">La description est requise.</div>
+    <textarea id="body" name="body" [(ngModel)]="resource.body" rows="4" maxlength="400" required></textarea>
 
     <label for="link">Lien:</label>
-    <div *ngIf="resourceForm.submitted && !link" class="error-text">Le lien est requis.</div>
-    <input type="url" id="link" name="link" [(ngModel)]="link" required>
+    <div *ngIf="resourceForm.submitted && !resource.link" class="error-text">Le lien est requis.</div>
+    <input type="url" id="link" name="link" [(ngModel)]="resource.link" required>
 
     <label for="imageUrl">URL de l'image:</label>
-    <div *ngIf="resourceForm.submitted && !imageUrl" class="error-text">L'URL de l'image est requise.</div>
-    <input type="url" id="imageUrl" name="imageUrl" [(ngModel)]="imageUrl" required>
+    <div *ngIf="resourceForm.submitted && !resource.imageUrl" class="error-text">L'URL de l'image est requise.</div>
+    <input type="url" id="imageUrl" name="imageUrl" [(ngModel)]="resource.imageUrl" required>
 
 
     <fieldset class="tags-container">
       <legend>Tags:</legend>
       <label>
-        <input type="checkbox" id="sinformer" name="tags" [(ngModel)]="sinformer" value="sinformer">
+        <input type="checkbox" id="sinformer" name="tags" [(ngModel)]="resource.tags.sinformer" value="sinformer">
         S'informer
       </label>
       <label>
-        <input type="checkbox" id="reduire" name="tags" [(ngModel)]="reduire" value="reduire">
+        <input type="checkbox" id="reduire" name="tags" [(ngModel)]="resource.tags.reduire" value="reduire">
         Réduire
       </label>
       <label>
-        <input type="checkbox" id="reutiliser" name="tags" [(ngModel)]="reutiliser" value="reutiliser">
+        <input type="checkbox" id="reutiliser" name="tags" [(ngModel)]="resource.tags.reutiliser" value="reutiliser">
         Réutiliser
       </label>
       <label>
-        <input type="checkbox" id="substituer" name="tags" [(ngModel)]="substituer" value="substituer">
+        <input type="checkbox" id="substituer" name="tags" [(ngModel)]="resource.tags.substituer" value="substituer">
         Substituer
       </label>
 
