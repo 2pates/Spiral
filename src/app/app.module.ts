@@ -11,13 +11,11 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HomeComponent } from './home/home.component';
-import { ResourceEditComponent } from './resources/resource-edit/resource-edit.component';
-import { ResourceComponent } from './resources/resource-list/resource-list.component';
+import { ResourceModule } from './resources/resource.module';
 
 @NgModule({
   declarations: [
@@ -26,16 +24,14 @@ import { ResourceComponent } from './resources/resource-list/resource-list.compo
     FooterComponent,
     NavbarComponent,
     HomeComponent,
-    ResourceComponent,
-    ResourceEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
     CommonModule,
     HttpClientModule,
+    ResourceModule,
   ],
   providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],

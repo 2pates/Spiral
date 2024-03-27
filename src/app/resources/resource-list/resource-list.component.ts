@@ -15,7 +15,7 @@ import { ResourceService } from '../shared/services/resource.service';
   templateUrl: './resource-list.component.html',
   styleUrls: ['./resource-list.component.css'],
 })
-export class ResourceComponent implements OnInit {
+export class ResourceListComponent implements OnInit {
   public resources: IResource[] = [];
 
   public errMsg: string | undefined;
