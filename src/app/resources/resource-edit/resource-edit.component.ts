@@ -12,6 +12,10 @@ import { ResourcesData } from '../shared/database/resources.data';
 export class ResourceEditComponent implements OnInit {
   public pageTitle: string = '';
   public availableTags: string[] = [];
+  public sinformerChecked: boolean = false;
+  public reduireChecked: boolean = false;
+  public reutiliserChecked: boolean = false;
+  public substituerChecked: boolean = false;
   public resource: IResource = {
     resourceId: 0, // Initialize with default ID
     title: '',
@@ -82,10 +86,10 @@ export class ResourceEditComponent implements OnInit {
     }
 
     if (
-      !this.availableTags.includes('sinformer') &&
-      !this.availableTags.includes('reduire') &&
-      !this.availableTags.includes('reutiliser') &&
-      !this.availableTags.includes('substituer')
+      !this.sinformerChecked &&
+      !this.reduireChecked &&
+      !this.reutiliserChecked &&
+      !this.substituerChecked
     ) {
       alert('Veuillez cocher au moins un tag.');
       return false;
@@ -95,16 +99,16 @@ export class ResourceEditComponent implements OnInit {
   }
 
   createResource(): void {
-    // this.resourceService.createResource(this.resource).subscribe(() => {
-    //   console.log('Ressource créée avec succès !');
-    // });
+    this.resourceService.createResource(this.resource).subscribe(() => {
+      console.log('Ressource créée avec succès !');
+    });
   }
 
   updateResource(): void {
-    // this.resourceService.updateResource(this.resource).subscribe(() => {
-    //   next: () => this.saveCompleted();
-    //   console.log('Ressource mise à jour avec succès !');
-    // });
+    this.resourceService.updateResource(this.resource).subscribe(() => {
+      next: () => this.saveCompleted();
+      console.log('Ressource mise à jour avec succès !');
+    });
   }
 
   public saveCompleted(): void {

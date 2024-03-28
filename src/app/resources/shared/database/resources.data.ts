@@ -165,7 +165,7 @@ export class ResourcesData implements InMemoryDbService {
         'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut' +
         'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum' +
         'dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui' +
-        'officia deserunt mollit anim id est laborum.aaaaaaaaaaa',
+        'officia deserunt mollit anim id est laborum.',
       link: 'https://www.wikipedia.fr/',
       imageUrl:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Two_red_dice_01.svg/330px-Two_red_dice_01.svg.png',
