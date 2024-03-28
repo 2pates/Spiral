@@ -19,7 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ResourceListComponent } from './resources/resource-list/resource-list.component';
 import { ResourceEditComponent } from './resources/resource-edit/resource-edit.component';
-import { ResourcesData } from './resources/shared/database/resources.data';
+import { ResourceData } from './resources/shared/api/resource.data';
 
 @NgModule({
   declarations: [
@@ -38,9 +38,9 @@ import { ResourcesData } from './resources/shared/database/resources.data';
     CommonModule,
     HttpClientModule,
     FormsModule,
-    InMemoryWebApiModule.forFeature(ResourcesData),
+    InMemoryWebApiModule.forFeature(ResourceData),
   ],
-  providers: [provideClientHydration(), provideRouter(routes), ResourcesData],
+  providers: [provideClientHydration(), provideRouter(routes), ResourceData],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

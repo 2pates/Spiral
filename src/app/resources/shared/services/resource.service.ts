@@ -3,36 +3,42 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IResource } from '../models/resource';
+import { ResourceData } from '../api/resource.data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResourceService {
-  private readonly RESOURCE_API_URL = 'api/resources.json';
+  private readonly RESOURCE_API_URL = 'api/resources';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private resourceData: ResourceData) {}
 
   public getResources(): Observable<IResource[]> {
-    return this.http.get<IResource[]>(this.RESOURCE_API_URL).pipe(
-      tap((resources) => console.log('resources: ')),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<IResource[]>(this.RESOURCE_API_URL)
+      .pipe(catchError(this.handleError));
   }
 
   public getResourceById(id: number): Observable<IResource> {
-    return this.getResources().pipe(
-      map((resources) =>
-        resources.find((resource) => resource.resourceId === id)
-      ),
-      map((resource) => {
-        if (resource) {
-          return resource;
-        } else {
-          throw new Error(`Resource with id ${id} not found`);
-        }
-      }),
-      catchError(this.handleError)
-    );
+    return this.http
+      .get<IResource>(`${this.RESOURCE_API_URL}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+  public createResource(resource: IResource): Observable<IResource> {
+    const { id, ...resourceWithoutId } = resource; //delete id to set the one from the server
+
+    return this.http
+      .post<IResource>(this.RESOURCE_API_URL, resourceWithoutId)
+      .pipe(catchError(this.handleError));
+  }
+
+  public updateResource(resource: IResource): Observable<IResource> {
+    const url = `${this.RESOURCE_API_URL}/${resource.id}`;
+    this.resourceData.updateResource(resource);
+    return this.http
+      .put<IResource>(url, resource)
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

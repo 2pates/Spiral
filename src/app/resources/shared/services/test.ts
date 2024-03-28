@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IResource } from '../models/resource';
-import { ResourcesData } from '../database/resources.data';
+import { ResourceData } from '../api/resource.data';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { ResourcesData } from '../database/resources.data';
 export class ResourceService {
   private readonly RESOURCE_DATABASE_URL = 'database/resources';
 
-  constructor(private http: HttpClient, private resourcesData: ResourcesData) {}
+  constructor(private http: HttpClient, private resourceData: ResourceData) {}
 
   public getResources(): Observable<IResource[]> {
     return this.http.get<IResource[]>(this.RESOURCE_DATABASE_URL).pipe(
@@ -27,16 +27,16 @@ export class ResourceService {
   }
 
   public updateResource(resource: IResource): Observable<IResource> {
-    const url = `${this.RESOURCE_DATABASE_URL}/${resource.resourceId}`;
-    this.resourcesData.updateResource(resource);
+    const url = `${this.RESOURCE_DATABASE_URL}/${resource.id}`;
+    this.resourceData.updateResource(resource);
     return this.http
       .put<IResource>(url, resource)
       .pipe(catchError(this.handleError));
   }
 
   public createResource(resource: IResource): Observable<IResource> {
-    resource.resourceId = this.resourcesData.genId();
-    this.resourcesData.addResource(resource);
+    // resource.id = this.resourceData.genId();
+    // this.resourceData.addResource(resource);
     return this.http
       .post<IResource>(this.RESOURCE_DATABASE_URL, resource)
       .pipe(catchError(this.handleError));

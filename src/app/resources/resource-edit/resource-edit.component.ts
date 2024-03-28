@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceService } from '../shared/services/resource.service';
 import { IResource } from '../shared/models/resource';
-import { ResourcesData } from '../shared/database/resources.data';
+import { ResourceData } from '../shared/api/resource.data';
 
 @Component({
   selector: 'app-resource-edit',
@@ -17,7 +17,7 @@ export class ResourceEditComponent implements OnInit {
   public reutiliserChecked: boolean = false;
   public substituerChecked: boolean = false;
   public resource: IResource = {
-    resourceId: 0, // Initialize with default ID
+    id: 0, // Initialize with default ID
     title: '',
     body: '',
     link: '',
@@ -29,11 +29,11 @@ export class ResourceEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private resourceService: ResourceService,
-    private resourcesData: ResourcesData
+    private resourceData: ResourceData
   ) {}
 
   ngOnInit(): void {
-    this.availableTags = this.resourcesData.getAvailableTags();
+    this.availableTags = this.resourceData.getAvailableTags();
 
     this.route.paramMap.subscribe((params) => {
       const idParam = params.get('id');
@@ -65,7 +65,7 @@ export class ResourceEditComponent implements OnInit {
     }
 
     console.log('Formulaire soumis avec succès !');
-    if (this.resource.resourceId === 0) {
+    if (this.resource.id === 0) {
       this.createResource();
       this.saveCompleted();
     } else {
@@ -112,6 +112,6 @@ export class ResourceEditComponent implements OnInit {
   }
 
   public saveCompleted(): void {
-    this.router.navigate(['/resources']);
+    this.router.navigate(['']);
   }
 }
