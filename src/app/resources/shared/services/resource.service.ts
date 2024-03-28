@@ -14,7 +14,7 @@ export class ResourceService {
 
   public getResources(): Observable<IResource[]> {
     return this.http.get<IResource[]>(this.RESOURCE_API_URL).pipe(
-      tap((resources) => console.log('resources: ', resources)),
+      tap((resources) => console.log('resources: ')),
       catchError(this.handleError)
     );
   }

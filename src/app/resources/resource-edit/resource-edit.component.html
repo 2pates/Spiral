@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Ajouter une ressource</h1>
+  <h1>{{ pageTitle }}</h1>
   <form (ngSubmit)="onSubmit()" #resourceForm="ngForm">
     <label for="title">Titre:</label>
     <div *ngIf="resourceForm.submitted && !resource.title" class="error-text">Le titre est requis.</div>
@@ -21,23 +21,23 @@
     <fieldset class="tags-container">
       <legend>Tags:</legend>
       <label>
-        <input type="checkbox" id="sinformer" name="tags" [(ngModel)]="resource.tags.sinformer" value="sinformer">
+        <input type="checkbox" id="sinformer" name="tags" [checked]="isTagSelected('sinformer')" value="sinformer">
         S'informer
       </label>
       <label>
-        <input type="checkbox" id="reduire" name="tags" [(ngModel)]="resource.tags.reduire" value="reduire">
+        <input type="checkbox" id="reduire" name="tags" [checked]="isTagSelected('reduire')" value="reduire">
         Réduire
       </label>
       <label>
-        <input type="checkbox" id="reutiliser" name="tags" [(ngModel)]="resource.tags.reutiliser" value="reutiliser">
+        <input type="checkbox" id="reutiliser" name="tags" [checked]="isTagSelected('reutiliser')" value="reutiliser">
         Réutiliser
       </label>
       <label>
-        <input type="checkbox" id="substituer" name="tags" [(ngModel)]="resource.tags.substituer" value="substituer">
+        <input type="checkbox" id="substituer" name="tags" [checked]="isTagSelected('substituer')" value="substituer">
         Substituer
       </label>
-
     </fieldset>
+
 
     <div class="search-bar">
       <input type="text" id="tagSearch" placeholder="Rechercher un tag">

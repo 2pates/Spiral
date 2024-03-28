@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
@@ -18,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ResourceListComponent } from './resources/resource-list/resource-list.component';
 import { ResourceEditComponent } from './resources/resource-edit/resource-edit.component';
+import { ResourcesData } from './resources/shared/database/resources.data';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { ResourceEditComponent } from './resources/resource-edit/resource-edit.c
     CommonModule,
     HttpClientModule,
     FormsModule,
+    InMemoryWebApiModule.forFeature(ResourcesData),
   ],
-  providers: [provideClientHydration(), provideRouter(routes)],
+  providers: [provideClientHydration(), provideRouter(routes), ResourcesData],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

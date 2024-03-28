@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceService } from '../shared/services/resource.service';
 import { IResource } from '../shared/models/resource';
+import { ResourcesData } from '../shared/database/resources.data';
 
 @Component({
   selector: 'app-resource-edit',
@@ -9,31 +10,35 @@ import { IResource } from '../shared/models/resource';
   styleUrls: ['./resource-edit.component.css'],
 })
 export class ResourceEditComponent implements OnInit {
+  public pageTitle: string = '';
+  public availableTags: string[] = [];
   public resource: IResource = {
     resourceId: 0, // Initialize with default ID
     title: '',
     body: '',
     link: '',
     imageUrl: '',
-    tags: {
-      sinformer: false,
-      reduire: false,
-      reutiliser: false,
-      substituer: false,
-    },
+    tags: [],
   };
 
   constructor(
     private route: ActivatedRoute,
-    private resourceService: ResourceService
+    private router: Router,
+    private resourceService: ResourceService,
+    private resourcesData: ResourcesData
   ) {}
 
   ngOnInit(): void {
+    this.availableTags = this.resourcesData.getAvailableTags();
+
     this.route.paramMap.subscribe((params) => {
       const idParam = params.get('id');
       if (idParam) {
         const id = Number(idParam);
         this.getSelectResource(id);
+        this.pageTitle = 'Modifier la ressource';
+      } else {
+        this.pageTitle = 'Créer une ressource';
       }
     });
   }
@@ -46,6 +51,10 @@ export class ResourceEditComponent implements OnInit {
       });
   }
 
+  isTagSelected(tag: string): boolean {
+    return this.resource.tags.includes(tag);
+  }
+
   onSubmit() {
     if (!this.validateForm()) {
       return false;
@@ -54,6 +63,7 @@ export class ResourceEditComponent implements OnInit {
     console.log('Formulaire soumis avec succès !');
     if (this.resource.resourceId === 0) {
       this.createResource();
+      this.saveCompleted();
     } else {
       this.updateResource();
     }
@@ -72,10 +82,10 @@ export class ResourceEditComponent implements OnInit {
     }
 
     if (
-      !this.resource.tags.sinformer &&
-      !this.resource.tags.reduire &&
-      !this.resource.tags.reutiliser &&
-      !this.resource.tags.substituer
+      !this.availableTags.includes('sinformer') &&
+      !this.availableTags.includes('reduire') &&
+      !this.availableTags.includes('reutiliser') &&
+      !this.availableTags.includes('substituer')
     ) {
       alert('Veuillez cocher au moins un tag.');
       return false;
@@ -87,16 +97,17 @@ export class ResourceEditComponent implements OnInit {
   createResource(): void {
     // this.resourceService.createResource(this.resource).subscribe(() => {
     //   console.log('Ressource créée avec succès !');
-    // Vous pouvez rediriger vers une autre page après la création réussie si nécessaire
     // });
-    console.log(this.resource);
   }
 
   updateResource(): void {
     // this.resourceService.updateResource(this.resource).subscribe(() => {
+    //   next: () => this.saveCompleted();
     //   console.log('Ressource mise à jour avec succès !');
-    // Vous pouvez rediriger vers une autre page après la mise à jour réussie si nécessaire
     // });
-    console.log(this.resource);
+  }
+
+  public saveCompleted(): void {
+    this.router.navigate(['/resources']);
   }
 }

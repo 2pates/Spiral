@@ -4,10 +4,5 @@ export interface IResource {
   body: string;
   link: string;
   imageUrl: string;
-  tags: {
-    sinformer: boolean;
-    reduire: boolean;
-    reutiliser: boolean;
-    substituer: boolean;
-  };
+  tags: string[]; // Utiliser un tableau de chaînes pour les balises
 }
