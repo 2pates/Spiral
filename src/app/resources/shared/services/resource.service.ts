@@ -41,6 +41,11 @@ export class ResourceService {
       .pipe(catchError(this.handleError));
   }
 
+  public deleteResource(resource: IResource): Observable<IResource> {
+    const url = `${this.RESOURCE_API_URL}/${resource.id}`;
+    return this.http.delete<any>(url).pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -11,6 +11,7 @@ import { ResourceData } from '../shared/api/resource.data';
 })
 export class ResourceEditComponent implements OnInit {
   public pageTitle: string = '';
+  public isEditing: boolean = false;
   public availableTags: string[] = [];
   public sinformerChecked: boolean = false;
   public reduireChecked: boolean = false;
@@ -24,6 +25,7 @@ export class ResourceEditComponent implements OnInit {
     imageUrl: '',
     tags: [],
   };
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +42,7 @@ export class ResourceEditComponent implements OnInit {
       if (idParam) {
         const id = Number(idParam);
         this.getSelectResource(id);
+        this.isEditing = true;
         this.pageTitle = 'Modifier la ressource';
       } else {
         this.pageTitle = 'Créer une ressource';
@@ -108,6 +111,13 @@ export class ResourceEditComponent implements OnInit {
     this.resourceService.updateResource(this.resource).subscribe(() => {
       next: () => this.saveCompleted();
       console.log('Ressource mise à jour avec succès !');
+    });
+  }
+
+  deleteResource(): void {
+    this.resourceService.deleteResource(this.resource).subscribe(() => {
+      this.saveCompleted();
+      console.log('Ressource supprimée avec succès !');
     });
   }
 
