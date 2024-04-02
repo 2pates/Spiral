@@ -25,21 +25,17 @@ export class ResourceService {
       .pipe(catchError(this.handleError));
   }
 
-  public createResource(resource: IResource): Observable<IResource> {
-    const { id, ...resourceWithoutId } = resource; //delete id to set the one from the server
-
-    return this.http
-      .post<IResource>(this.RESOURCE_API_URL, resourceWithoutId)
-      .pipe(catchError(this.handleError));
+  public createResource(resource: IResource) : void {
+    this.resourceData.addResource(resource);
   }
 
-  public updateResource(resource: IResource): Observable<IResource> {
-    const url = `${this.RESOURCE_API_URL}/${resource.id}`;
-    this.resourceData.updateResource(resource);
-    return this.http
-      .put<IResource>(url, resource)
-      .pipe(catchError(this.handleError));
-  }
+  // public updateResource(resource: IResource): Observable<IResource> {
+  //   const url = `${this.RESOURCE_API_URL}/${resource.id}`;
+  //   this.resourceData.updateResource(resource);
+  //   return this.http
+  //     .put<IResource>(url, resource)
+  //     .pipe(catchError(this.handleError));
+  // }
 
   public deleteResource(resource: IResource): Observable<IResource> {
     const url = `${this.RESOURCE_API_URL}/${resource.id}`;

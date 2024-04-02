@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "spiral",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "europe-west1"
+      }
+    }
+  ]
+}

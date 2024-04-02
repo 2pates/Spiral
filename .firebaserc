@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "spiral-insa": {
+      "hosting": {
+        "spiral": [
+          "spiral-insa"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "spiral-insa"
+  }
+}

@@ -18,7 +18,7 @@ export class ResourceEditComponent implements OnInit {
   public reutiliserChecked: boolean = false;
   public substituerChecked: boolean = false;
   public resource: IResource = {
-    id: 0, // Initialize with default ID
+    id: '0', // Initialize with default ID
     title: '',
     body: '',
     link: '',
@@ -35,8 +35,6 @@ export class ResourceEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.availableTags = this.resourceData.getAvailableTags();
-
     this.route.paramMap.subscribe((params) => {
       const idParam = params.get('id');
       if (idParam) {
@@ -51,6 +49,7 @@ export class ResourceEditComponent implements OnInit {
   }
 
   public getSelectResource(id: number): void {
+    
     this.resourceService
       .getResourceById(id)
       .subscribe((resource: IResource) => {
@@ -68,7 +67,7 @@ export class ResourceEditComponent implements OnInit {
     }
 
     console.log('Formulaire soumis avec succès !');
-    if (this.resource.id === 0) {
+    if (this.resource.id === "0") {
       this.createResource();
       this.saveCompleted();
     } else {
@@ -102,16 +101,15 @@ export class ResourceEditComponent implements OnInit {
   }
 
   createResource(): void {
-    this.resourceService.createResource(this.resource).subscribe(() => {
+    this.resourceService.createResource(this.resource);
       console.log('Ressource créée avec succès !');
-    });
   }
 
   updateResource(): void {
-    this.resourceService.updateResource(this.resource).subscribe(() => {
-      next: () => this.saveCompleted();
-      console.log('Ressource mise à jour avec succès !');
-    });
+    // this.resourceService.updateResource(this.resource).subscribe(() => {
+    //   next: () => this.saveCompleted();
+    //   console.log('Ressource mise à jour avec succès !');
+    // });
   }
 
   deleteResource(): void {
