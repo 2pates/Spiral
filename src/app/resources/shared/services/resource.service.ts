@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { IResource } from '../models/resource';
 import { ResourceData } from '../api/resource.data';
+import { get } from 'http';
 
 @Injectable({
   providedIn: 'root',
@@ -19,23 +20,17 @@ export class ResourceService {
       .pipe(catchError(this.handleError));
   }
 
-  public getResourceById(id: number): Observable<IResource> {
-    return this.http
-      .get<IResource>(`${this.RESOURCE_API_URL}/${id}`)
-      .pipe(catchError(this.handleError));
+  public getResourceById(id: string): IResource {
+    return this.resourceData.getResourceById(id);
   }
 
   public createResource(resource: IResource) : void {
     this.resourceData.addResource(resource);
   }
 
-  // public updateResource(resource: IResource): Observable<IResource> {
-  //   const url = `${this.RESOURCE_API_URL}/${resource.id}`;
-  //   this.resourceData.updateResource(resource);
-  //   return this.http
-  //     .put<IResource>(url, resource)
-  //     .pipe(catchError(this.handleError));
-  // }
+  public updateResource(resource: IResource): void {
+    this.resourceData.updateResource(resource);
+  }
 
   public deleteResource(resource: IResource): Observable<IResource> {
     const url = `${this.RESOURCE_API_URL}/${resource.id}`;

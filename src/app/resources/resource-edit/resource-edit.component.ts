@@ -38,7 +38,7 @@ export class ResourceEditComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const idParam = params.get('id');
       if (idParam) {
-        const id = Number(idParam);
+        const id = idParam;
         this.getSelectResource(id);
         this.isEditing = true;
         this.pageTitle = 'Modifier la ressource';
@@ -48,13 +48,9 @@ export class ResourceEditComponent implements OnInit {
     });
   }
 
-  public getSelectResource(id: number): void {
+  public getSelectResource(id: string): void {
     
-    this.resourceService
-      .getResourceById(id)
-      .subscribe((resource: IResource) => {
-        this.resource = resource;
-      });
+    this.resource = this.resourceService.getResourceById(id);      
   }
 
   isTagSelected(tag: string): boolean {
@@ -106,10 +102,9 @@ export class ResourceEditComponent implements OnInit {
   }
 
   updateResource(): void {
-    // this.resourceService.updateResource(this.resource).subscribe(() => {
-    //   next: () => this.saveCompleted();
-    //   console.log('Ressource mise à jour avec succès !');
-    // });
+    this.resourceService.updateResource(this.resource);
+    this.saveCompleted();
+    console.log('Ressource mise à jour avec succès !');
   }
 
   deleteResource(): void {
