@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { IResource } from '../models/resource';
+import { Resource } from '../models/resource.models';
 import { ResourceData } from '../api/resource.data';
 
 @Injectable({
@@ -13,32 +13,32 @@ export class ResourceService {
 
   constructor(private http: HttpClient, private resourceData: ResourceData) {}
 
-  public getResources(): Observable<IResource[]> {
-    return this.http.get<IResource[]>(this.RESOURCE_DATABASE_URL).pipe(
+  public getResources(): Observable<Resource[]> {
+    return this.http.get<Resource[]>(this.RESOURCE_DATABASE_URL).pipe(
       tap((resources) => console.log('resources: ')),
       catchError(this.handleError)
     );
   }
 
-  public getResourceById(id: number): Observable<IResource> {
+  public getResourceById(id: number): Observable<Resource> {
     const url = `${this.RESOURCE_DATABASE_URL}/${id}`;
 
-    return this.http.get<IResource>(url).pipe(catchError(this.handleError));
+    return this.http.get<Resource>(url).pipe(catchError(this.handleError));
   }
 
-  public updateResource(resource: IResource): Observable<IResource> {
+  public updateResource(resource: Resource): Observable<Resource> {
     const url = `${this.RESOURCE_DATABASE_URL}/${resource.id}`;
     this.resourceData.updateResource(resource);
     return this.http
-      .put<IResource>(url, resource)
+      .put<Resource>(url, resource)
       .pipe(catchError(this.handleError));
   }
 
-  public createResource(resource: IResource): Observable<IResource> {
+  public createResource(resource: Resource): Observable<Resource> {
     // resource.id = this.resourceData.genId();
     // this.resourceData.addResource(resource);
     return this.http
-      .post<IResource>(this.RESOURCE_DATABASE_URL, resource)
+      .post<Resource>(this.RESOURCE_DATABASE_URL, resource)
       .pipe(catchError(this.handleError));
   }
 

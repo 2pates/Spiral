@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceService } from '../shared/services/resource.service';
-import { IResource } from '../shared/models/resource';
-import { ResourceData } from '../shared/api/resource.data';
+import { Resource } from '../shared/models/resource.models';
 
 @Component({
   selector: 'app-resource-edit',
@@ -17,21 +16,13 @@ export class ResourceEditComponent implements OnInit {
   public reduireChecked: boolean = false;
   public reutiliserChecked: boolean = false;
   public substituerChecked: boolean = false;
-  public resource: IResource = {
-    id: '0', // Initialize with default ID
-    title: '',
-    body: '',
-    link: '',
-    imageUrl: '',
-    tags: [],
-  };
-  
+  public existingResource: boolean = false;
+  resource: Resource = new Resource();
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private resourceService: ResourceService,
-    private resourceData: ResourceData
+    private resourceService: ResourceService
   ) {}
 
   ngOnInit(): void {
@@ -42,19 +33,20 @@ export class ResourceEditComponent implements OnInit {
         this.getSelectResource(id);
         this.isEditing = true;
         this.pageTitle = 'Modifier la ressource';
+        this.existingResource = true;
       } else {
         this.pageTitle = 'Créer une ressource';
+        this.existingResource = false;
       }
     });
   }
 
   public getSelectResource(id: string): void {
-    
-    this.resource = this.resourceService.getResourceById(id);      
+    this.resource = this.resourceService.getResourceById(id);
   }
 
   isTagSelected(tag: string): boolean {
-    return this.resource.tags.includes(tag);
+    return this.resource.tags ? this.resource.tags.includes(tag) : false;
   }
 
   onSubmit() {
@@ -63,12 +55,12 @@ export class ResourceEditComponent implements OnInit {
     }
 
     console.log('Formulaire soumis avec succès !');
-    if (this.resource.id === "0") {
-      this.createResource();
-      this.saveCompleted();
-    } else {
+    if (this.existingResource) {
       this.updateResource();
+    } else {
+      this.createResource();
     }
+    this.saveCompleted();
     return true;
   }
 
@@ -97,8 +89,9 @@ export class ResourceEditComponent implements OnInit {
   }
 
   createResource(): void {
-    this.resourceService.createResource(this.resource);
+    this.resourceService.addResource(this.resource).then(() => {
       console.log('Ressource créée avec succès !');
+    });
   }
 
   updateResource(): void {
@@ -108,10 +101,8 @@ export class ResourceEditComponent implements OnInit {
   }
 
   deleteResource(): void {
-    this.resourceService.deleteResource(this.resource).subscribe(() => {
-      this.saveCompleted();
-      console.log('Ressource supprimée avec succès !');
-    });
+    this.resourceService.deleteResource(this.resource);
+    this.saveCompleted();
   }
 
   public saveCompleted(): void {

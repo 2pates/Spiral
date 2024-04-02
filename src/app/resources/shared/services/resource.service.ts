@@ -1,40 +1,63 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { IResource } from '../models/resource';
-import { ResourceData } from '../api/resource.data';
-import { get } from 'http';
+import { Resource } from '../models/resource.models';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResourceService {
-  private readonly RESOURCE_API_URL = 'api/resources';
+  private dbPath = '/resources';
+  resources_db: AngularFirestoreCollection<Resource>;
 
-  constructor(private http: HttpClient, private resourceData: ResourceData) {}
-
-  public getResources(): Observable<IResource[]> {
-    return this.http
-      .get<IResource[]>(this.RESOURCE_API_URL)
-      .pipe(catchError(this.handleError));
+  constructor(private db: AngularFirestore) {
+    this.resources_db = db.collection(this.dbPath);
   }
 
-  public getResourceById(id: string): IResource {
-    return this.resourceData.getResourceById(id);
+  getResources(): AngularFirestoreCollection<Resource> {
+    return this.resources_db;
   }
 
-  public createResource(resource: IResource) : void {
-    this.resourceData.addResource(resource);
+  //TODO : ADD TAGS TO DB
+  addResource(newResource: Resource): any {
+    return this.resources_db.add({ ...newResource });
   }
 
-  public updateResource(resource: IResource): void {
-    this.resourceData.updateResource(resource);
+  //TODO : ADD TAGS TO DB
+  updateResource(resource: Resource): Promise<void> {
+    //Promet un objet qui représente l'achévement ou l'échec
+    return this.resources_db.doc(resource.id).update(resource);
   }
 
-  public deleteResource(resource: IResource): Observable<IResource> {
-    const url = `${this.RESOURCE_API_URL}/${resource.id}`;
-    return this.http.delete<any>(url).pipe(catchError(this.handleError));
+  deleteResource(resource: Resource): Promise<void> {
+    return this.resources_db.doc(resource.id).delete();
+  }
+
+  getResourceById(id: string): Resource {
+    console.log('id: ', id);
+    const res = this.resources_db.doc();
+
+    console.log(res);
+
+    const out = {
+      id: '0',
+      title: 'On est dans getResourceById',
+      body: 'Body',
+      link: 'Link',
+      imageUrl: 'Image',
+      tags: ['tag1', 'tag2'],
+    };
+
+    return out;
+  }
+
+  getAvailableTags(): string[] {
+    //TODO
+    return ['0'];
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -8,8 +8,9 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { IResource } from '../shared/models/resource';
+import { Resource } from '../shared/models/resource.models';
 import { ResourceService } from '../shared/services/resource.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-resource',
@@ -17,7 +18,7 @@ import { ResourceService } from '../shared/services/resource.service';
   styleUrls: ['./resource-list.component.css'],
 })
 export class ResourceListComponent implements OnInit {
-  public resources: IResource[] = [];
+  public resources: Resource[] = [];
 
   public errMsg: string | undefined;
 
@@ -39,11 +40,25 @@ export class ResourceListComponent implements OnInit {
     private resourceService: ResourceService // Inject ResourcesData here //ADD
   ) {}
 
-  ngOnInit() {
-    this.resourceService.getResources().subscribe({
-      next: (resources) => (this.resources = resources),
-      error: (err: string) => (this.errMsg = err),
-    });
+  ngOnInit(): void {
+    this.refreshList();
+  }
+
+  refreshList(): void {
+    this.resourceService
+      .getResources()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({
+            id: c.payload.doc.id,
+            ...c.payload.doc.data(),
+          }))
+        )
+      )
+      .subscribe((data) => {
+        this.resources = data;
+      });
   }
 
   ngAfterViewInit() {
