@@ -19,6 +19,12 @@ export class ResourceService {
       .pipe(catchError(this.handleError));
   }
 
+  public getSpecificResources(section: string): Observable<IResource[]> {
+    return this.getResources().pipe(
+      map(resources => resources.filter(resource => resource.tags.includes(section)))
+    );
+  }
+
   public getResourceById(id: number): Observable<IResource> {
     return this.http
       .get<IResource>(`${this.RESOURCE_API_URL}/${id}`)

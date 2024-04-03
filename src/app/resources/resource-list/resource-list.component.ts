@@ -6,7 +6,7 @@ import {
   ElementRef,
   Inject,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, Location } from '@angular/common';
 
 import { IResource } from '../shared/models/resource';
 import { ResourceService } from '../shared/services/resource.service';
@@ -17,6 +17,8 @@ import { ResourceService } from '../shared/services/resource.service';
   styleUrls: ['./resource-list.component.css'],
 })
 export class ResourceListComponent implements OnInit {
+  public section: string = ""; // is also the current tag used as filter
+  
   public resources: IResource[] = [];
 
   public errMsg: string | undefined;
@@ -36,12 +38,14 @@ export class ResourceListComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private resourceService: ResourceService // Inject ResourcesData here //ADD
+    private resourceService: ResourceService, // Inject ResourcesData here //ADD
+    private location: Location
   ) {}
 
   ngOnInit() {
-    this.resourceService.getResources().subscribe({
-      next: (resources) => (this.resources = resources),
+    this.section = this.location.path().substring(1).split('/')[0];
+    this.resourceService.getSpecificResources(this.section).subscribe({
+      next: (resources:IResource[]) => (this.resources = resources),
       error: (err: string) => (this.errMsg = err),
     });
   }
