@@ -41,8 +41,8 @@ export class ResourceEditComponent implements OnInit {
     });
   }
 
-  public getSelectResource(id: string): void {
-    this.resource = this.resourceService.getResourceById(id);
+  public async getSelectResource(id: string): Promise<void> {
+    this.resource = await this.resourceService.getResourceById(id);
   }
 
   isTagSelected(tag: string): boolean {

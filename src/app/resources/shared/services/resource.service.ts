@@ -5,7 +5,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { catchError, lastValueFrom, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,22 +37,16 @@ export class ResourceService {
     return this.resources_db.doc(resource.id).delete();
   }
 
-  getResourceById(id: string): Resource {
-    console.log('id: ', id);
-    const res = this.resources_db.doc();
-
-    console.log(res);
-
-    const out = {
-      id: '0',
-      title: 'On est dans getResourceById',
-      body: 'Body',
-      link: 'Link',
-      imageUrl: 'Image',
-      tags: ['tag1', 'tag2'],
+  async getResourceById(id: string): Promise<Resource> {
+    let resourceObservable = this.resources_db.doc(id).get();
+    //ToDo add a time limit if resourceObservable is not found
+    let resourceValues = await lastValueFrom(resourceObservable);
+    const resourceById: Resource = {
+      id: id,
+      ...resourceValues.data(),
     };
 
-    return out;
+    return resourceById;
   }
 
   getAvailableTags(): string[] {
