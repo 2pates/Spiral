@@ -1,4 +1,6 @@
-import { DocumentReference } from '@angular/fire/firestore';
+import { DocumentReference, DocumentData } from '@angular/fire/firestore';
+import { Tag } from './tag.models';
+import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 export class Resource {
   id?: string;
@@ -6,5 +8,5 @@ export class Resource {
   body?: string;
   link?: string;
   imageUrl?: string;
-  tags?: DocumentReference[];
+  tags?: AngularFirestoreDocument<Tag>[];
 }

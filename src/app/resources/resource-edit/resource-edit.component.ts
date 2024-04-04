@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceService } from '../shared/services/resource.service';
 import { Resource } from '../shared/models/resource.models';
 import { DocumentReference } from '@angular/fire/firestore';
+import { TagService } from '../shared/services/tag.service';
+import { Tag } from '../shared/models/tag.models';
+import { DocumentData } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-resource-edit',
@@ -19,12 +22,14 @@ export class ResourceEditComponent implements OnInit {
   public substituerChecked: boolean = false;
   public existingResource: boolean = false;
   resource: Resource = new Resource();
+  tag: Tag = new Tag();
   public tagPath = '/tags/';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private resourceService: ResourceService
+    private resourceService: ResourceService,
+    private tagService: TagService
   ) {}
 
   ngOnInit(): void {
@@ -41,17 +46,12 @@ export class ResourceEditComponent implements OnInit {
         this.existingResource = false;
       }
     });
+    this.resource.tags = [];
+    // this.addTag('sinformer');
   }
 
   public async getSelectResource(id: string): Promise<void> {
     this.resource = await this.resourceService.getResourceById(id);
-  }
-
-  isTagSelected(tag: string): boolean {
-    // return this.resource.tags
-    //   ? this.resource.tags.includes(this.tagPath + tag)
-    //   : false;
-    return false;
   }
 
   onSubmit() {
@@ -95,15 +95,18 @@ export class ResourceEditComponent implements OnInit {
 
   createResource(): void {
     if (this.sinformerChecked) {
-      tagResource: DocumentReference;
-      this.resource.tags?.push();
     }
-    this.resourceService.addResource(this.resource).then(() => {
-      console.log('Ressource créée avec succès !');
-    });
+    this.addTag('sinformer');
+    this.addResource();
   }
 
   updateResource(): void {
+    if (this.sinformerChecked) {
+      // this.setTagById('sinformer');
+      // let path = this.tagService.getTagPath(this.tag);
+      // this.resourceService.addTag(this.resource, path);
+      // console.log('value: ', this.resourceService.tranformTagRefToString([ref]));
+    }
     this.resourceService.updateResource(this.resource);
     this.saveCompleted();
     console.log('Ressource mise à jour avec succès !');
@@ -116,5 +119,31 @@ export class ResourceEditComponent implements OnInit {
 
   public saveCompleted(): void {
     this.router.navigate(['']);
+  }
+
+  isTagSelected(tag: string): boolean {
+    // return this.resource.tags
+    //   ? this.resource.tags.includes(this.tagPath + tag)
+    //   : false;
+    return false;
+  }
+
+  async addTag(id: string): Promise<void> {
+    // On récupère le tag
+    this.tag = await this.tagService.getTagById(id);
+    console.log('addTag: this.tag: ', this.tag);
+    // On récupère la ref du tag (pour l'instant c'est un AngularFirestoreDocument)
+    let ref = this.tagService.getTagRef(this.tag);
+    console.log('addTag: ref: ', ref);
+    this.resource.tags?.push(ref); //AngularFirestoreDocument n'est pas supporté pour ajouter dans la bd
+    console.log('addTag: this.resource: ', this.resource);
+    this.resourceService.addResource(this.resource).then(() => {
+      console.log('Ressource créée avec succès !');
+    });
+    console.log('after create: this.resource: ', this.resource);
+  }
+
+  async addResource(): Promise<void> {
+    console.log('addResource: this.resource: ', this.resource);
   }
 }
