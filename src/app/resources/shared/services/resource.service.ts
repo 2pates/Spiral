@@ -5,7 +5,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { HttpErrorResponse } from '@angular/common/http';
-import { catchError, lastValueFrom, map, throwError } from 'rxjs';
+import { Observable, catchError, lastValueFrom, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,31 @@ export class ResourceService {
 
   getResources(): AngularFirestoreCollection<Resource> {
     return this.resources_db;
+  }
+
+  //Methode Gaspard
+  // public getSpecificResources(section: string): Observable<IResource[]> {
+  //   return this.getResources().pipe(
+  //     map(resources => resources.filter(resource => resource.tags.includes(section)))
+  //   );
+  // }
+
+  public async getSpecificResources(section: string): Promise<Resource[]> {
+    //Similaire à a proposition de chatgpt
+    // const specificResources = await this.getResources().snapshotChanges().pipe(
+    //   map(resources => resources.filter(resource => resource.tags.includes(section)))
+    // );
+    // const foundResource = data.find(resource => resource.tags.includes(section));
+    // Similaire à ce qu'on a fait pour getResourceById
+    // let resourceObservable = this.resources_db.doc().get();
+    // //ToDo add a time limit if resourceObservable is not found
+    // let resourceValues = await lastValueFrom(resourceObservable);
+    // console.log("data", resourceValues.data());
+    // const specificResources: Resource[] = {
+    //   id: resourceValues.id,
+    //   ...resourceValues.data(),
+    // };
+    // return specificResources;
   }
 
   //TODO : ADD TAGS TO DB
