@@ -47,11 +47,20 @@ export class ResourceEditComponent implements OnInit {
     this.resource = await this.resourceService.getResourceById(id);
   }
 
-  isTagSelected(tag: string): boolean {
+  async isTagSelected(tag: string): Promise<boolean> {
     // return this.resource.tags
     //   ? this.resource.tags.includes(this.tagPath + tag)
     //   : false;
-    return false;
+    this.resourceService.addNewTagToDb(tag);
+    let id = await this.resourceService.getTagById(tag);
+
+    let add = this.resource.tags?.push(id);
+    
+    if(add){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   onSubmit() {
