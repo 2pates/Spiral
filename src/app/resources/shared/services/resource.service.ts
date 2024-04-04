@@ -25,7 +25,6 @@ export class ResourceService {
   }
 
   async getResources(): Promise<Resource[]> {
-    console.log('appel: getResources');
     let resourcesObservable = this.resources_db.snapshotChanges().pipe(
       map((changes) =>
         changes.map((c) => ({
