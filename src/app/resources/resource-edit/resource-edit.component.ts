@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ResourceService } from '../shared/services/resource.service';
 import { Resource } from '../shared/models/resource.models';
+import { DocumentReference } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-resource-edit',
@@ -18,6 +19,7 @@ export class ResourceEditComponent implements OnInit {
   public substituerChecked: boolean = false;
   public existingResource: boolean = false;
   resource: Resource = new Resource();
+  public tagPath = '/tags/';
 
   constructor(
     private route: ActivatedRoute,
@@ -46,7 +48,10 @@ export class ResourceEditComponent implements OnInit {
   }
 
   isTagSelected(tag: string): boolean {
-    return this.resource.tags ? this.resource.tags.includes(tag) : false;
+    // return this.resource.tags
+    //   ? this.resource.tags.includes(this.tagPath + tag)
+    //   : false;
+    return false;
   }
 
   onSubmit() {
@@ -90,7 +95,8 @@ export class ResourceEditComponent implements OnInit {
 
   createResource(): void {
     if (this.sinformerChecked) {
-      this.resource.tags?.push('sinformer');
+      tagResource: DocumentReference;
+      this.resource.tags?.push();
     }
     this.resourceService.addResource(this.resource).then(() => {
       console.log('Ressource créée avec succès !');

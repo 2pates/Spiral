@@ -1,7 +1,7 @@
 import {
   BrowserModule,
   provideClientHydration,
-}from '@angular/platform-browser';
+} from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,12 +17,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ResourceListComponent } from './resources/resource-list/resource-list.component';
 import { ResourceEditComponent } from './resources/resource-edit/resource-edit.component';
-import { ResourceData } from './resources/shared/api/resource.data';
 import { environment } from '../environments/environment';
-import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgModule } from '@angular/core';
-
 
 @NgModule({
   declarations: [
@@ -44,7 +42,7 @@ import { NgModule } from '@angular/core';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
-  providers: [provideClientHydration(), provideRouter(routes), ResourceData],
+  providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -53,6 +53,7 @@ export class ResourceListComponent implements OnInit {
   }
 
   async selectResources(): Promise<void> {
+    console.log('Appel getressourcesbytags');
     this.resources = await this.resourceService.getResourceByTags(this.tags);
   }
 
