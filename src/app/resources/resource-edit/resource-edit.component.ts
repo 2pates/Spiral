@@ -89,6 +89,9 @@ export class ResourceEditComponent implements OnInit {
   }
 
   createResource(): void {
+    if (this.sinformerChecked) {
+      this.resource.tags?.push('sinformer');
+    }
     this.resourceService.addResource(this.resource).then(() => {
       console.log('Ressource créée avec succès !');
     });

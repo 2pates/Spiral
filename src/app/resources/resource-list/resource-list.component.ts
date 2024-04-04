@@ -18,7 +18,8 @@ import { map } from 'rxjs';
   styleUrls: ['./resource-list.component.css'],
 })
 export class ResourceListComponent implements OnInit {
-  public section: string = ''; // is also the current tag used as filter
+  public category: string = this.location.path().substring(1).split('/')[0];
+  public tags: string[] = []; // is also the current tag used as filter
   public resources: Resource[] = [];
 
   public errMsg: string | undefined;
@@ -43,25 +44,16 @@ export class ResourceListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.refreshList();
+    this.addTags();
+    this.selectResources();
   }
 
-  refreshList(): void {
-    this.resourceService
-      .getResources()
-      .snapshotChanges()
-      .pipe(
-        map((changes) =>
-          changes.map((c) => ({
-            id: c.payload.doc.id,
-            ...c.payload.doc.data(),
-          }))
-        )
-      )
-      .subscribe((data) => {
-        this.resources = data;
-      });
-    this.section = this.location.path().substring(1).split('/')[0];
+  addTags(): void {
+    this.tags.push(this.category);
+  }
+
+  async selectResources(): Promise<void> {
+    this.resources = await this.resourceService.getResourceByTags(this.tags);
   }
 
   ngAfterViewInit() {
