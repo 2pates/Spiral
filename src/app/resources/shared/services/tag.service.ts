@@ -3,6 +3,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
+  DocumentData,
 } from '@angular/fire/compat/firestore';
 import { HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom, lastValueFrom, map, throwError } from 'rxjs';
@@ -72,12 +73,12 @@ export class TagService {
     return tagById;
   }
 
-  getTagRef(tag: Tag): AngularFirestoreDocument<Tag> {
-    let doc = this.tags_db.doc('/' + tag.id);
-    console.log('getTagRef : doc : ', doc);
-    // let docRef = doc as DocumentReference;
-    return doc;
-  }
+  // getTagRef(tag: Tag): DocumentReference<Tag, DocumentData> {
+  //   let doc = this.tags_db.doc('/' + tag.id) as unknown;
+  //   console.log('getTagRef : doc : ', doc);
+  //   let docRef = doc as DocumentReference;
+  //   return docRef;
+  // }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

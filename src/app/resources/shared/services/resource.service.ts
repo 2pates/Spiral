@@ -18,8 +18,10 @@ export class ResourceService {
   private dbPath = '/resources';
   private resources_db: AngularFirestoreCollection<Resource>;
   private db: AngularFirestore;
+  private tagService: TagService;
 
-  constructor(private _db: AngularFirestore) {
+  constructor(private _db: AngularFirestore, tagService: TagService) {
+    this.tagService = tagService;
     this.db = _db;
     this.resources_db = this.db.collection(this.dbPath);
   }
@@ -40,12 +42,12 @@ export class ResourceService {
       resources = data;
     });
 
-    //boucle sur resources et affiche les id dees tags à partir des resources
+    //boucle sur resources et affiche les id des tags à partir des resources
     resources = await firstValueFrom(resourcesObservable);
-    resources.forEach((resource) => {
+    resources.forEach(async (resource) => {
       console.log(
-        'tags dans le resource: ',
-        this.tranformTagRefToString(resource.tags)
+        'tags dans la resource: ',
+        await this.tabIdToTabName(resource.tags)
       );
     });
 
@@ -56,18 +58,18 @@ export class ResourceService {
   async getResourceByTags(tagsParam: string[]): Promise<Resource[]> {
     let allResources = await this.getResources();
     let filteredResources: Resource[];
-    let tags: string[];
-    let tagsRef: AngularFirestoreDocument<Tag>[];
+    let tags: string[] | undefined;
 
     filteredResources = allResources.filter((resource) => {
-      tags = this.tranformTagRefToString(resource.tags);
-      let res = tagsParam.some((tagFiltre) => {
-        return tags.includes(tagFiltre);
-      });
-      // console.log('ID : ', resource?.id, 'res = ', res);
+      tags = resource.tags;
+      let res = false;
+      if (tags) {
+        res = tagsParam.some((tagFiltre) => {
+          return tags?.includes(tagFiltre);
+        });
+      }
       return res;
     });
-
     console.log('filtered resources : ', filteredResources);
 
     return filteredResources;
@@ -100,43 +102,26 @@ export class ResourceService {
     return resourceById;
   }
 
-  getTagsFromResource(resource: Resource): string[] {
-    return this.tranformTagRefToString(resource.tags);
+  async getTagsFromResource(resource: Resource): Promise<string[]> {
+    return await this.tabIdToTabName(resource.tags);
   }
 
-  tranformTagRefToString(
-    documentRef: AngularFirestoreDocument<Tag>[] | undefined
-  ): string[] {
-    //Fake AngularFirestoreDocument<Tag>[]
-    const fakeStock1: AngularFirestoreDocument<Tag> = this.db
-      .collection('/tags')
-      .doc('/sinformer');
-    console.log('fakeStock1: ', fakeStock1);
-    if (documentRef) console.log('documentRef[0]: ', documentRef[0]);
-    // const fakeStock2: AngularFirestoreDocument<Tag> = this.db
-    //   .collection('/tags')
-    //   .doc('/reduire');
-
-    // let documentRef = [fakeStock1, fakeStock2];
-
-    console.log('documentRef : ', documentRef);
+  //tab id to tab name
+  async tabIdToTabName(tabId: string[] | undefined): Promise<string[]> {
     let tags: string[] = [];
-    if (documentRef) {
-      let resourceTagsIterator = documentRef.entries();
-      if (resourceTagsIterator) {
-        console.log('Tags dans la ressource : ');
-        for (const [index, docRef] of resourceTagsIterator) {
-          console.log('docRef : ', docRef);
-          let docData = docRef.ref;
-          console.log(`Index: ${index}, Document ID: ${docData.id}`);
-          tags.push(docData.id);
+    if (tabId) {
+      for (const id of tabId) {
+        let tag = await this.tagService.getTagById(id);
+        if (tag.name) {
+          // console.log(`Id: ${id}, TagName: ${tag.name}`);
+          tags.push(tag.name);
         }
       }
     }
     return tags;
   }
 
-  addTagToResource(resource: Resource, ref: AngularFirestoreDocument<Tag>) {
+  addTagToResource(resource: Resource, ref: string) {
     resource.tags?.push(ref);
     return resource;
   }

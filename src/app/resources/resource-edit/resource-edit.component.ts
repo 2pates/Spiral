@@ -95,8 +95,17 @@ export class ResourceEditComponent implements OnInit {
 
   createResource(): void {
     if (this.sinformerChecked) {
+      this.addTag('sinformer');
     }
-    this.addTag('sinformer');
+    if (this.reutiliserChecked) {
+      this.addTag('reutiliser');
+    }
+    if (this.reduireChecked) {
+      this.addTag('reduire');
+    }
+    if (this.substituerChecked) {
+      this.addTag('substituer');
+    }
     this.addResource();
   }
 
@@ -105,7 +114,7 @@ export class ResourceEditComponent implements OnInit {
       // this.setTagById('sinformer');
       // let path = this.tagService.getTagPath(this.tag);
       // this.resourceService.addTag(this.resource, path);
-      // console.log('value: ', this.resourceService.tranformTagRefToString([ref]));
+      // console.log('value: ', this.resourceService.tabIdToTabName([ref]));
     }
     this.resourceService.updateResource(this.resource);
     this.saveCompleted();
@@ -133,10 +142,11 @@ export class ResourceEditComponent implements OnInit {
     this.tag = await this.tagService.getTagById(id);
     console.log('addTag: this.tag: ', this.tag);
     // On récupère la ref du tag (pour l'instant c'est un AngularFirestoreDocument)
-    let ref = this.tagService.getTagRef(this.tag);
-    console.log('addTag: ref: ', ref);
-    this.resource.tags?.push(ref); //AngularFirestoreDocument n'est pas supporté pour ajouter dans la bd
+    // let ref = this.tagService.getTagRef(this.tag);
+    // console.log('addTag: ref: ', ref);
+    this.resource.tags?.push(id); //AngularFirestoreDocument n'est pas supporté pour ajouter dans la bd
     console.log('addTag: this.resource: ', this.resource);
+    // Ajouter la resource
     this.resourceService.addResource(this.resource).then(() => {
       console.log('Ressource créée avec succès !');
     });

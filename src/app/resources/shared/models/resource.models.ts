@@ -8,5 +8,5 @@ export class Resource {
   body?: string;
   link?: string;
   imageUrl?: string;
-  tags?: AngularFirestoreDocument<Tag>[];
+  tags?: string[];
 }

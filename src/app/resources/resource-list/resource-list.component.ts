@@ -19,7 +19,7 @@ import { map } from 'rxjs';
 })
 export class ResourceListComponent implements OnInit {
   public category: string = this.location.path().substring(1).split('/')[0];
-  public tags: string[] = []; // is also the current tag used as filter
+  public filterTags: string[] = []; // is also the current tag used as filter
   public resources: Resource[] = [];
 
   public errMsg: string | undefined;
@@ -49,11 +49,13 @@ export class ResourceListComponent implements OnInit {
   }
 
   addTags(): void {
-    this.tags.push(this.category);
+    this.filterTags.push(this.category);
   }
 
   async selectResources(): Promise<void> {
-    this.resources = await this.resourceService.getResourceByTags(this.tags);
+    this.resources = await this.resourceService.getResourceByTags(
+      this.filterTags
+    );
   }
 
   ngAfterViewInit() {
