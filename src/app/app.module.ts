@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgModule } from '@angular/core';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NgModule } from '@angular/core';
     FooterComponent,
     NavbarComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

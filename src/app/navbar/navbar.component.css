@@ -7,6 +7,11 @@
     background-color: inherit;
     font-family: inherit;
     margin: 0;
+    background-color: #f8f9fa;
+  }
+
+  .container-fluid{
+    padding-right: 15%;
   }
   
   .navbar a:hover, .dropdown:hover .dropbtn {
@@ -38,4 +43,9 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+
+  .admin {
+    padding-right: 5%;
   }
