@@ -1,17 +1,9 @@
-import {
-  Component,
-  OnInit,
-  ViewChildren,
-  QueryList,
-  ElementRef,
-  Inject,
-} from '@angular/core';
-import { DOCUMENT, Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Resource } from '../shared/models/resource.models';
 import { ResourceService } from '../shared/services/resource.service';
 import { TagService } from '../shared/services/tag.service';
-import { map } from 'rxjs';
 import { Tag } from '../shared/models/tag.models';
 
 @Component({
@@ -37,10 +29,7 @@ export class ResourceListComponent implements OnInit {
     { value: 'eight' },
   ];
 
-  @ViewChildren('title') titles!: QueryList<ElementRef>;
-
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private resourceService: ResourceService, // Inject ResourcesData here //ADD
     private tagService: TagService,
     private location: Location
@@ -48,7 +37,7 @@ export class ResourceListComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.initCategory();
-    this.selectResources();
+    await this.selectResources();
   }
 
   async initCategory(): Promise<void> {
@@ -65,42 +54,5 @@ export class ResourceListComponent implements OnInit {
     this.resources = await this.resourceService.getResourceByTags(
       this.filterTags
     );
-  }
-
-  ngAfterViewInit() {
-    this.titles.forEach((title) => this.adjustFontSize(title.nativeElement));
-  }
-
-  adjustFontSize(element: HTMLElement) {
-    const defaultView = this.document.defaultView;
-
-    if (defaultView) {
-      const computedStyle = defaultView.getComputedStyle(element);
-
-      if (computedStyle) {
-        const lineHeight = parseFloat(computedStyle.lineHeight);
-        const maxLines = 3;
-
-        const textHeight = element.scrollHeight;
-        const numberOfLines = Math.ceil(textHeight / lineHeight);
-
-        if (numberOfLines > maxLines) {
-          const fontSize = parseFloat(computedStyle.fontSize);
-          const newFontSize = (fontSize * maxLines) / numberOfLines;
-
-          element.style.fontSize = newFontSize + 'px';
-        } else {
-          var textLength = element.textContent?.length ?? 0;
-          var fontSizeMax = 2.8;
-          var fontSizeMin = 1.7;
-          var fontSize = fontSizeMax - 0.04 * textLength;
-          if (fontSize < fontSizeMin) {
-            fontSize = fontSizeMin;
-          }
-          var fontSizeFinal = fontSize + 'rem';
-          element.style.fontSize = fontSizeFinal;
-        }
-      }
-    }
   }
 }

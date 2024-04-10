@@ -22,6 +22,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
+import { AdjustFontSizeDirective } from './shared/adjust-font-size.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
+    AdjustFontSizeDirective,
   ],
   imports: [
     BrowserModule,
