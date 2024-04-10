@@ -102,7 +102,6 @@ export class ResourceService {
       for (const id of tabId) {
         let tag = await this.tagService.getTagById(id);
         if (tag.name) {
-          // console.log(`Id: ${id}, TagName: ${tag.name}`);
           tags.push(tag.name);
         }
       }

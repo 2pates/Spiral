@@ -19,11 +19,7 @@ export class AdjustFontSizeDirective implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const title = this.elementRef.nativeElement as HTMLElement;
-    if (title) {
-      this.adjustFontSize(title);
-    } else {
-      console.log('Titles are not yet initialized');
-    }
+    this.adjustFontSize(title);
   }
 
   adjustFontSize(element: HTMLElement) {

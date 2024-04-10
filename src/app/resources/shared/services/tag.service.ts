@@ -40,7 +40,6 @@ export class TagService {
     //boucle sur resources et affiche les id dees tags à partir des resources
     tags = await firstValueFrom(tagsObservable);
 
-    console.log('Tags dans getResources', tags);
     return tags;
   }
 
@@ -68,17 +67,10 @@ export class TagService {
       ...tagValues.data(),
     };
 
-    console.log('getTagById: ', tagById);
 
     return tagById;
   }
 
-  // getTagRef(tag: Tag): DocumentReference<Tag, DocumentData> {
-  //   let doc = this.tags_db.doc('/' + tag.id) as unknown;
-  //   console.log('getTagRef : doc : ', doc);
-  //   let docRef = doc as DocumentReference;
-  //   return docRef;
-  // }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
