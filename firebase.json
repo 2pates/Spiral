@@ -1,11 +1,26 @@
 {
-  "hosting": [
-    {
-      "target": "spiral",
-      "source": ".",
-      "frameworksBackend": {
-        "region": "europe-west1"
-      }
-    }
-  ]
+  "hosting": {
+    "public": "dist/spiral",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  },
+  "firestore": {
+    "rules": "*",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "firestore": {
+      "port": 8080
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
 }
