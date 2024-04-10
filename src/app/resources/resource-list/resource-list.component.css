@@ -263,7 +263,7 @@ p {
   .two,
   .four,
   .six,
-  .seven {
+  .eight {
     grid-template-columns: 30% 70%;
   }
   .one h2,
@@ -322,15 +322,15 @@ p {
   p {
     font-family: cursive;
     text-align: justify;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 30px;
+    margin-right: 30px;
     margin-top: 2%;
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
     line-height: 1.2em;
-    max-height: 11em;
+    max-height: 15.6em;
   }
 
   /* Specific style for each box */
