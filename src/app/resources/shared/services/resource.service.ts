@@ -3,13 +3,10 @@ import { Resource } from '../models/resource.models';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom, from, lastValueFrom, map, throwError } from 'rxjs';
-import { Tag } from '../models/tag.models';
 import { TagService } from './tag.service';
-import { DocumentData, DocumentReference } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',

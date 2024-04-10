@@ -3,13 +3,14 @@
 </div>
 
 <div class="wrapper">
-      <div *ngFor="let resource of resources; let i = index" class="box" [ngClass]="boxes[i % boxes.length]?.value">
+      <a *ngFor="let resource of resources; let i = index" class="box box-link"
+            [ngClass]="boxes[i % boxes.length]?.value" href="{{resource.link}}" target="_blank">
 
-            <h2 [routerLink]="['/resources', resource.id, 'edit']" #title>{{resource.title}}</h2>
+            <h2 [routerLink]="['/resources', resource.id, 'edit']" appAdjustFontSize>{{resource.title}}</h2>
             <p>{{resource.body}}</p>
-            <a class="wrapper-img" href="{{resource.link}}" target="_blank">
+            <a class="wrapper-img">
                   <img class="resource-img" src="{{resource.imageUrl}}" alt="Image Un">
             </a>
 
-      </div>
+      </a>
 </div>
