@@ -320,15 +320,7 @@ p {
   }
 
   p {
-    font-family: cursive;
-    text-align: justify;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 2%;
-    display: -webkit-box;
-    overflow: hidden;
     -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
     line-height: 1.2em;
     max-height: 15.6em;
   }
