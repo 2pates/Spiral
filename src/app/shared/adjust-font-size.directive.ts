@@ -35,30 +35,31 @@ export class AdjustFontSizeDirective implements AfterViewInit {
 
       if (computedStyle) {
         const lineHeight = parseFloat(computedStyle.lineHeight);
-        const maxLines = 3;
+        const maxLines = 4;
 
         const textHeight = element.scrollHeight;
         const numberOfLines = Math.ceil(textHeight / lineHeight);
 
-        if (numberOfLines > maxLines) {
-          const fontSize = parseFloat(computedStyle.fontSize);
-          const newFontSize = (fontSize * maxLines) / numberOfLines;
-
-          element.style.fontSize = newFontSize + 'px';
-        } else {
-          var textLength = element.textContent?.length ?? 0;
-          var fontSizeMax = 2.8;
-          var fontSizeMin = 1.5;
-          var fontSize = fontSizeMax;
-          if (textLength > 6) {
+        var textLength = element.textContent?.length ?? 0;
+        console.log('text-length', textLength);
+        var fontSizeMax = 2.8;
+        var fontSizeMin = 1.3;
+        var fontSize = fontSizeMax;
+        if (textLength > 6) {
+          if (textLength > 18) {
             fontSize = fontSizeMax - 0.05 * textLength;
-            if (fontSize < fontSizeMin) {
-              fontSize = fontSizeMin;
-            }
+          } else if (textLength > 30) {
+            fontSize = fontSizeMin;
+          } else {
+            fontSize = fontSizeMax - 0.08 * textLength;
           }
-          var fontSizeFinal = fontSize + 'rem';
-          element.style.fontSize = fontSizeFinal;
+          if (fontSize < fontSizeMin) {
+            fontSize = fontSizeMin;
+          }
         }
+
+        var fontSizeFinal = fontSize + 'rem';
+        element.style.fontSize = fontSizeFinal;
       }
     }
   }
