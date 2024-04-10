@@ -10,7 +10,9 @@ import { DOCUMENT, Location } from '@angular/common';
 
 import { Resource } from '../shared/models/resource.models';
 import { ResourceService } from '../shared/services/resource.service';
+import { TagService } from '../shared/services/tag.service';
 import { map } from 'rxjs';
+import { Tag } from '../shared/models/tag.models';
 
 @Component({
   selector: 'app-resource',
@@ -18,7 +20,7 @@ import { map } from 'rxjs';
   styleUrls: ['./resource-list.component.css'],
 })
 export class ResourceListComponent implements OnInit {
-  public category: string = this.location.path().substring(1).split('/')[0];
+  public category: string = '';
   public filterTags: string[] = []; // is also the current tag used as filter
   public resources: Resource[] = [];
 
@@ -40,16 +42,23 @@ export class ResourceListComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private resourceService: ResourceService, // Inject ResourcesData here //ADD
+    private tagService: TagService,
     private location: Location
   ) {}
 
-  ngOnInit(): void {
-    this.addTags();
+  async ngOnInit(): Promise<void> {
+    await this.initCategory();
     this.selectResources();
   }
 
-  addTags(): void {
-    this.filterTags.push(this.category);
+  async initCategory(): Promise<void> {
+    let tag: Tag = await this.tagService.getTagById(
+      this.location.path().substring(1).split('/')[0]
+    );
+    if (tag && tag.id && tag.name) {
+      this.category = tag.name;
+      this.filterTags.push(tag.id);
+    }
   }
 
   async selectResources(): Promise<void> {

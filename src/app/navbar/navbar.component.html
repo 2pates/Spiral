@@ -27,7 +27,7 @@
         <i class="fa fa-caret-down"></i> <!-- This line of code represents an icon for a downward arrow. -->
       </button>
       <div class="dropdown-content">
-        <a [routerLink]="['/resources/create']">add resource</a>
+        <a href="#">Link 1</a>
         <a href="#">Link 2</a>
         <a href="#">Link 3</a>
         <a href="#">Link 4</a>
@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-  <div class = 'admin'>
+  <div class='admin'>
     <a class="a-admin" [routerLink]="['login']" *ngIf="!(isLoggedIn$ | async)">
       <img src="assets/default.png" height="40" alt="Log-in" loading="eager" />
     </a>

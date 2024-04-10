@@ -140,17 +140,12 @@ export class ResourceEditComponent implements OnInit {
   async addTag(id: string): Promise<void> {
     // On récupère le tag
     this.tag = await this.tagService.getTagById(id);
-    console.log('addTag: this.tag: ', this.tag);
     // On récupère la ref du tag (pour l'instant c'est un AngularFirestoreDocument)
-    // let ref = this.tagService.getTagRef(this.tag);
-    // console.log('addTag: ref: ', ref);
     this.resource.tags?.push(id); //AngularFirestoreDocument n'est pas supporté pour ajouter dans la bd
-    console.log('addTag: this.resource: ', this.resource);
     // Ajouter la resource
     this.resourceService.addResource(this.resource).then(() => {
       console.log('Ressource créée avec succès !');
     });
-    console.log('after create: this.resource: ', this.resource);
   }
 
   async addResource(): Promise<void> {

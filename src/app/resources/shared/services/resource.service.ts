@@ -44,14 +44,7 @@ export class ResourceService {
 
     //boucle sur resources et affiche les id des tags à partir des resources
     resources = await firstValueFrom(resourcesObservable);
-    resources.forEach(async (resource) => {
-      console.log(
-        'tags dans la resource: ',
-        await this.tabIdToTabName(resource.tags)
-      );
-    });
 
-    console.log('Resources dans getResources');
     return resources;
   }
 
@@ -70,7 +63,6 @@ export class ResourceService {
       }
       return res;
     });
-    console.log('filtered resources : ', filteredResources);
 
     return filteredResources;
   }
