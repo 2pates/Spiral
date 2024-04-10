@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
-import { HeroesComponent } from './heroes/heroes.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +28,6 @@ import { AdjustFontSizeDirective } from './shared/adjust-font-size.directive';
     AppComponent,
     ResourceListComponent,
     ResourceEditComponent,
-    HeroesComponent,
     FooterComponent,
     NavbarComponent,
     HomeComponent,

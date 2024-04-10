@@ -7,6 +7,7 @@ Angular project with Angular CLI 17.2.0 and npm 9.2.0 (`ng version`)
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`
 
 ## Database with firebase
+
 If you need to install firebase, run `ng add @angular/fire`
 
 ## Code scaffolding
@@ -19,7 +20,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 main page
 ├── navbar
 |	└── searchbar
-└── (heroes) (redirect to resource page)
+└── (category) (redirect to resource page)
 
 
 resource page

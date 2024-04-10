@@ -114,7 +114,6 @@ export class ResourceEditComponent implements OnInit {
       // this.setTagById('sinformer');
       // let path = this.tagService.getTagPath(this.tag);
       // this.resourceService.addTag(this.resource, path);
-      // console.log('value: ', this.resourceService.tabIdToTabName([ref]));
     }
     this.resourceService.updateResource(this.resource);
     this.saveCompleted();
@@ -149,6 +148,5 @@ export class ResourceEditComponent implements OnInit {
   }
 
   async addResource(): Promise<void> {
-    console.log('addResource: this.resource: ', this.resource);
   }
 }

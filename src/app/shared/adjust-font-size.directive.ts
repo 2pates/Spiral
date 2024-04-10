@@ -19,15 +19,10 @@ export class AdjustFontSizeDirective implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const title = this.elementRef.nativeElement as HTMLElement;
-    if (title) {
-      this.adjustFontSize(title);
-    } else {
-      console.log('Titles are not yet initialized');
-    }
+    this.adjustFontSize(title);
   }
 
   adjustFontSize(element: HTMLElement) {
-    console.log('I am here !');
     const defaultView = this.document.defaultView;
 
     if (defaultView) {
@@ -41,7 +36,6 @@ export class AdjustFontSizeDirective implements AfterViewInit {
         const numberOfLines = Math.ceil(textHeight / lineHeight);
 
         var textLength = element.textContent?.length ?? 0;
-        console.log('text-length', textLength);
         var fontSizeMax = 2.8;
         var fontSizeMin = 1.3;
         var fontSize = fontSizeMax;
